@@ -1,0 +1,149 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Exsylor - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x419 /fo"../bin/Debug/Exsylor.res" /d "_DEBUG" /d "_AFXDLL" "F:\Действующие_системы\Exsylor старый вариант\src\Exsylor.rc"" 
+Creating temporary file "C:\DOCUME~1\USER\LOCALS~1\Temp\RSPF6.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "_JOINT" /Fo"../bin/Debug/" /Fd"../bin/Debug/" /FD /GZ /c 
+"F:\Действующие_системы\Exsylor старый вариант\src\BlockSelDlg.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Bm.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Bmview.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Brtitle.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Brview.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Bv.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Bvview.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ChildFrm.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\DiaInd.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\EditNameDlg.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Exsylor.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\FormInd.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\GenDat.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Gener.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\GenKnow.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Induct.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Linkuser.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\MainFrm.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ModDlg.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Modview.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Proof.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Reduction.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrDoc.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrDocEx.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrDocExpImp.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Scrdocmd.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrDocRg.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrDocSM.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrInit.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Scriptvw.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\ScrObj.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Splitter.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Trbzview.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Treeview.cpp"
+"F:\Действующие_системы\Exsylor старый вариант\src\Wordview.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\USER\LOCALS~1\Temp\RSPF6.tmp" 
+Creating temporary file "C:\DOCUME~1\USER\LOCALS~1\Temp\RSPF7.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /D "_JOINT" /Fp"../bin/Debug/Exsylor.pch" /Yc"stdafx.h" /Fo"../bin/Debug/" /Fd"../bin/Debug/" /FD /GZ /c 
+"F:\Действующие_системы\Exsylor старый вариант\src\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\USER\LOCALS~1\Temp\RSPF7.tmp" 
+Creating temporary file "C:\DOCUME~1\USER\LOCALS~1\Temp\RSPF8.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"../bin/Debug/Exsylor.pdb" /debug /machine:I386 /out:"../bin/Debug/Exsylor.exe" /pdbtype:sept 
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\BlockSelDlg.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Bm.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Bmview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Brtitle.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Brview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Bv.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Bvview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ChildFrm.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\DiaInd.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\EditNameDlg.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Exsylor.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\FormInd.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\GenDat.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Gener.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\GenKnow.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Induct.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Linkuser.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\MainFrm.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ModDlg.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Modview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Proof.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Reduction.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrDoc.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrDocEx.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrDocExpImp.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Scrdocmd.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrDocRg.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrDocSM.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrInit.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Scriptvw.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\ScrObj.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Splitter.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\StdAfx.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Trbzview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Treeview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Wordview.obj"
+"\Действующие_системы\Exsylor старый вариант\bin\Debug\Exsylor.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\USER\LOCALS~1\Temp\RSPF8.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+BlockSelDlg.cpp
+Bm.cpp
+Bmview.cpp
+Brtitle.cpp
+Brview.cpp
+Bv.cpp
+Bvview.cpp
+ChildFrm.cpp
+DiaInd.cpp
+EditNameDlg.cpp
+Exsylor.cpp
+FormInd.cpp
+GenDat.cpp
+Gener.cpp
+GenKnow.cpp
+Induct.cpp
+Linkuser.cpp
+MainFrm.cpp
+ModDlg.cpp
+Modview.cpp
+Generating Code...
+Compiling...
+Proof.cpp
+Reduction.cpp
+ScrDoc.cpp
+ScrDocEx.cpp
+ScrDocExpImp.cpp
+Scrdocmd.cpp
+ScrDocRg.cpp
+ScrDocSM.cpp
+ScrInit.cpp
+Scriptvw.cpp
+ScrObj.cpp
+Splitter.cpp
+Trbzview.cpp
+Treeview.cpp
+Wordview.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Exsylor.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,165 @@
+[OPTIONS]
+CONTENTS=main_index
+TITLE=Exsylor-2 Application Help
+COMPRESS=true
+WARNING=2
+
+[FILES]
+hlp\exs2.rtf
+hlp\ready.rtf
+hlp\exs2_exp.rtf
+hlp\exs2_rec.rtf
+
+[BITMAPS]
+; toolbar buttons for File commands
+hlp\filenew.bmp
+hlp\fileopen.bmp
+hlp\fileprnt.bmp
+hlp\filesave.bmp
+
+; toolbar buttons for Edit commands
+hlp\editcopy.bmp
+hlp\editcut.bmp
+hlp\editpast.bmp
+hlp\editundo.bmp
+
+; cursors
+hlp\curarw4.bmp
+hlp\curarw2.bmp
+hlp\curhelp.bmp
+
+; miscellaneous
+hlp\bullet.bmp
+hlp\hlpsbar.bmp
+hlp\titlebar.bmp
+hlp\modd.bmp
+hlp\editname.bmp
+hlp\inp_know.bmp
+hlp\bitmap1.bmp
+hlp\bitmap11.bmp
+hlp\no_save.bmp
+hlp\ed_know.bmp
+hlp\inp_data.bmp
+hlp\ed_data.bmp
+hlp\rec_mode.bmp
+hlp\explan.bmp
+
+hlp\MODNEW.BMP
+hlp\MODOPEN.BMP
+hlp\MODEDIT.BMP
+hlp\MODDEL.BMP
+
+hlp\KNWNEW.BMP
+hlp\KNWOPEN.BMP
+hlp\KNWSAVE.BMP
+hlp\KNWCLOSE.BMP
+hlp\KNWEDIT.BMP
+hlp\KNWDEL.BMP
+hlp\KNWGEN.BMP
+
+hlp\DATNEW.BMP
+hlp\DATOPEN.BMP
+hlp\DATSAVE.BMP
+hlp\DATCLOSE.BMP
+hlp\DATEDIT.BMP
+hlp\DATDEL.BMP
+hlp\DATGEN.BMP
+
+hlp\HLPABOUT.BMP
+
+hlp\SMPADD.BMP
+hlp\SMPDEL.BMP
+hlp\SMPREAD.BMP
+hlp\SMPINS.BMP
+hlp\SMPUPD.BMP
+hlp\SMPCLEAR.BMP
+
+hlp\REGDEL.BMP
+hlp\REGADD.BMP
+hlp\REGPART.BMP
+hlp\INDUCT.BMP
+
+hlp\RECOBJ.BMP
+hlp\RECMODE.BMP
+hlp\RECFULL.BMP
+hlp\RECATTR.BMP
+hlp\RECVAL.BMP
+hlp\RECEXPLA.BMP
+hlp\RECEXMAT.BMP
+
+hlp\STEPPREV.BMP
+hlp\STEPLAST.BMP
+hlp\STEPFRST.BMP
+hlp\STEPNEXT.BMP
+
+hlp\EXPMODE.BMP
+hlp\REDUCT.BMP
+hlp\EXIT.BMP
+hlp\PARGENK.BMP
+hlp\PARGEND.BMP
+hlp\TAB_IND.BMP
+hlp\PAR_IND.BMP
+
+hlp\tlb_bm.bmp
+hlp\tlb_edd.bmp
+hlp\tlb_edk.bmp
+hlp\tlb_newd.bmp
+hlp\tlb_newk.bmp
+hlp\tlb_exp.bmp
+hlp\tlb_rec.bmp
+hlp\tlb_sys.bmp
+hlp\tlb_set.bmp
+hlp\tlb_prf.bmp
+
+[ALIAS]
+HIDR_MAINFRAME = main_index
+HIDR_TESTHLTYPE = HIDR_DOC1TYPE
+HIDD_ABOUTBOX = HID_APP_ABOUT
+
+HID_HT_SIZE = HID_SC_SIZE
+HID_HT_HSCROLL = scrollbars
+HID_HT_VSCROLL = scrollbars
+HID_HT_MINBUTTON = HID_SC_MINIMIZE
+HID_HT_MAXBUTTON = HID_SC_MAXIMIZE
+AFX_HIDP_INVALID_FILENAME         = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_OPEN_DOC       = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_SAVE_DOC       = AFX_HIDP_default
+AFX_HIDP_ASK_TO_SAVE              = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_CREATE_DOC     = AFX_HIDP_default
+AFX_HIDP_FILE_TOO_LARGE           = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_START_PRINT    = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_LAUNCH_HELP    = AFX_HIDP_default
+AFX_HIDP_INTERNAL_FAILURE         = AFX_HIDP_default
+AFX_HIDP_COMMAND_FAILURE          = AFX_HIDP_default
+AFX_HIDP_PARSE_INT                = AFX_HIDP_default
+AFX_HIDP_PARSE_REAL               = AFX_HIDP_default
+AFX_HIDP_PARSE_INT_RANGE          = AFX_HIDP_default
+AFX_HIDP_PARSE_REAL_RANGE         = AFX_HIDP_default
+AFX_HIDP_PARSE_STRING_SIZE        = AFX_HIDP_default
+AFX_HIDP_FAILED_INVALID_FORMAT    = AFX_HIDP_default
+AFX_HIDP_FAILED_INVALID_PATH      = AFX_HIDP_default
+AFX_HIDP_FAILED_DISK_FULL         = AFX_HIDP_default
+AFX_HIDP_FAILED_ACCESS_READ       = AFX_HIDP_default
+AFX_HIDP_FAILED_ACCESS_WRITE      = AFX_HIDP_default
+AFX_HIDP_FAILED_IO_ERROR_READ     = AFX_HIDP_default
+AFX_HIDP_FAILED_IO_ERROR_WRITE    = AFX_HIDP_default
+AFX_HIDP_STATIC_OBJECT            = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_CONNECT        = AFX_HIDP_default
+AFX_HIDP_SERVER_BUSY              = AFX_HIDP_default
+AFX_HIDP_BAD_VERB                 = AFX_HIDP_default
+AFX_HIDP_FAILED_MEMORY_ALLOC      = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_NOTIFY         = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_LAUNCH         = AFX_HIDP_default
+AFX_HIDP_ASK_TO_UPDATE            = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_UPDATE         = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_REGISTER       = AFX_HIDP_default
+AFX_HIDP_FAILED_TO_AUTO_REGISTER  = AFX_HIDP_default
+
+[MAP]
+#include <e:\msvc\mfc\include\afxhelp.hm>
+#include <hlp\exs.hm>
+
+[CONFIG]
+BrowseButtons();
+[WINDOWS]
+main = "EXILOR-2 : Expert System of Logical Recognition",(100,100,700,700)
