@@ -1,6 +1,7 @@
 // scrdoc.cpp : implementation of the CExsDoc class
 // 17.05.2007 -------------------------------------
 
+#include "stdafx.h"
 #include <io.h>
 #include <ctype.h>
 #include <sys\types.h>

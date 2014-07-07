@@ -1,8 +1,9 @@
 // GenDat.cpp : implementation file
 // 18.05.2007 -----------------------
 
+#include "stdafx.h"
 #include "exsylor.h"
-#include "ÑoverDoc.h"
+#include "coverDoc.h"
 
 int Proof(CBM& Matr,CBV& VectRec,CWordArray& StepProof);
 BOOL BuildChainProof(CBM& SDiz,CBV& VectRec,CStack& Chain);

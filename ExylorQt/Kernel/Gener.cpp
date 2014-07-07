@@ -1,5 +1,8 @@
 // GenDat.cpp : implementation file
+//
 
+#include "stdafx.h"
+#include "exsylor.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
