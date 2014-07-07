@@ -60,6 +60,7 @@
     <property name="title">
      <string>About</string>
     </property>
+    <addaction name="actionAbout_Exsylor"/>
    </widget>
    <addaction name="menuNew"/>
    <addaction name="menuAbove"/>
@@ -88,6 +89,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionAbout_Exsylor">
+   <property name="text">
+    <string>About Exsylor</string>
    </property>
   </action>
  </widget>

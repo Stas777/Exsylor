@@ -13,8 +13,12 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    aboutexylor.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    aboutexylor.h \
+    mainwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutexylor.ui
