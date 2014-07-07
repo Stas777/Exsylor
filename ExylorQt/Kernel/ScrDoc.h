@@ -19,15 +19,17 @@ public:
 };
 
 //------------------------------------------------------------------------
-class CSBlock : public CObArray
+class CSBlock
 {
 public:
   CSBlock();
+  vector<CSample*> sampleArr;
 
 // Attributes
 //    int       m_nElements;     // Number of regularities/samples
 // Замена на GetSize
     string   m_sTitle;        // Name of block  - Key for Map
+
 
     // Operations
 public:

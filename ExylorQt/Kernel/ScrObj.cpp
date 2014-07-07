@@ -8,6 +8,7 @@
 #include <math.h>
 #include "CoverDoc.h"
 #include "ScrDoc.h"
+#include "archive.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -43,29 +44,29 @@ void CSample::Serialize(CArch& ar) { m_Values.Serialize(ar); }
 CSBlock::CSBlock() { }
 //---------------------------------------------------------------
 CSample* CSBlock::GetAt(int nIndex)  const
-{ return (CSample*) CObArray::GetAt(nIndex); }
+{ return (CSample*) sampleArr.at(nIndex); }
 //---------------------------------------------------------------
-void CSBlock::SetAt(int nIndex, CSample* newElement)
-{ CObArray::SetAt(nIndex, (CObject *) newElement); }
+void CSBlock::SetAt(int nIndex, CSample* newElement){
+    sampleArr.at(nIndex) = newElement;
+}
 //---------------------------------------------------------------
-int CSBlock::Add(CSample* newElement)
-{ return CObArray::Add((CObject *) newElement); }
+int CSBlock::Add(CSample* newElement){
+    sampleArr.push_back(newElement);
+    return sampleArr.size() - 1;
+}
 //---------------------------------------------------------------
 void CSBlock::RemoveAll()
-{ int i;
-  CSample* pSmp;
-  for (i=0; i<GetSize(); i++) {
-    pSmp = GetAt(i); pSmp->m_Values.RemoveAll(); delete (pSmp);
-  }
-  CObArray::RemoveAll();
+{
+    sampleArr.clear();
 }
 //---------------------------------------------------------------
 void CSBlock::Serialize(CArch& ar)
 { if (ar.IsStoring())   // storing code here
     ar<<m_sTitle;
+    ar<<sampleArr;
   else                  // loading code here
     ar>>m_sTitle; 
-  CObArray::Serialize(ar);
+    ar>>sampleArr;
 }
 
 /////////////////////////////////////////////////////////////////////////////
