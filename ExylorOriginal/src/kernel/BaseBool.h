@@ -1,4 +1,6 @@
 /////////////////////////////////////////////////////////////////
+// Ver.2.1.3     09.11.2007
+//               Новый метод генерации векторов GenRbvN
 // Ver.2.1.2     22.02.2006
 //               RemoveAllRows - сохраняет число столбцов матрицы
 //               Add для CBM перестала быть inline, допускает добавление
@@ -27,6 +29,9 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <string>
+#include <vector>
+using namespace std;
 
 #ifdef _LINUX
 #undef _DEBUG
@@ -110,7 +115,7 @@ extern unsigned int GetRandN();
 extern void SetRandMode(BOOL Fl = TRUE);
 extern BOOL GetRandMode();
 
-
+class CArch;
 
 class CBV
 {
@@ -132,7 +137,8 @@ public:
   CBV GenRbv (int nCol);
   CBV GenRbvMid(int nCol, int nRang);
   CBV GenRbvFix (int nCol, int nRang);
-  
+
+  CBV GenRbvN(int n);   // 09.11.2007
 //*************************************** Reading ***************************************
   operator BYTE*() const;
   BYTE operator[](int nIndex) const;
@@ -189,7 +195,7 @@ public:
   void LoopRightShift(int nShift);
 
 //******************** Operations of weighting, finding and casing **********************
-  int  CountBit() const;
+  int CountBit() const;
   int LeftOne(int nNext = -1) const;
   int LeftOne(BYTE& bt) const;
   int RightOne(int nNext = -1) const;
@@ -233,6 +239,8 @@ public:
   friend CArchive& AFXAPI operator<<(CArchive& ar, const CBV& bv);
   friend CArchive& AFXAPI operator>>(CArchive& ar, CBV& bv);
 #endif
+  FSTD(CArch&) operator<<(CArch& ar, const CBV& bv);
+  FSTD(CArch&) operator>>(CArch& ar, CBV& bv);
 
 //***************************** Advanced access to memory *******************************
   void Empty();
@@ -354,6 +362,8 @@ public:
   void BitChar(CStringArray& StrRes, BOOL WithClear=TRUE, BOOL WithNum=FALSE, 
                char One = '1',char Zero='0');
 #else
+  void BitChar(vector <string>& StrRes, BOOL WithClear=TRUE, BOOL WithNum=FALSE, 
+    char One = '1',char Zero='0');
   char* BitChar(char One = '1', char Zero = '0', BOOL WithNum=FALSE);
 #endif
 
@@ -468,6 +478,7 @@ public:
   void AssertValid() const;
 #endif
 #endif //_LINUX
+  void Serialize(CArch&);
 
   void SetRowDiz(int nRow, const BYTE* v1);
   void SetRowDiz(int nRow, const BYTE* v1, const BYTE* v2);
@@ -512,7 +523,9 @@ protected:
   void CharBit(const CString s);
   void CharBit(const CStringArray& s);
 #endif
-  void CharBit(char* s);
+  void CharBit(const vector <string>& s);
+  void CharBit(const string s);
+  void CharBit(const char* s);
 };
 
 

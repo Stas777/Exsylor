@@ -24,6 +24,10 @@
 
 /////////////////////////////////////////////////////////////////
 // Boolean vector
+#ifndef _LINUX
+#define _LINUX
+#endif
+
 #ifndef _BASEBOOL
 #define _BASEBOOL
 
@@ -33,11 +37,12 @@
 #include <vector>
 using namespace std;
 
+
 #ifdef _LINUX
 #undef _DEBUG
 typedef unsigned char BYTE; 
 typedef unsigned long ULONG; 
-typedef int BOOL;
+typedef bool BOOL;
 
 #define TRUE 1
 #define FALSE 0
@@ -52,7 +57,6 @@ typedef int BOOL;
 
 
 #else
-#include <afxwin.h>         // MFC core and standard components
 #ifndef FO_
 #define FO_
 #define FSTD(_x) friend _x AFXAPI 
@@ -72,8 +76,9 @@ typedef int BOOL;
 
 #define BYTE_1 0xff
 #define LONG_1 0xffffffff
+#define ULONG unsigned long int
 
-const BYTE OB[8]={128,64,32,16,8,4,2,1};
+const char OB[8]={128,64,32,16,8,4,2,1};
 const ULONG OB4[32]=
         { 0x80000000, 0x40000000, 0x20000000, 0x10000000, 
            0x8000000,  0x4000000,  0x2000000,  0x1000000, 
@@ -84,7 +89,7 @@ const ULONG OB4[32]=
                 0x80,       0x40,       0x20,       0x10, 
                  0x8,        0x4,        0x2,        0x1 };
 
-const BYTE TabC[256] = {
+const char TabC[256] = {
 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, 
 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 
 1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, 
@@ -103,17 +108,17 @@ const BYTE TabC[256] = {
 4, 5, 5, 6, 5, 6, 6, 7, 5, 6, 6, 7, 6, 7, 7, 8};
 
 
-inline BYTE COUNTBIT(BYTE a) {
-BYTE w=a;
- w=(w&0x55)+((w>>1)&0x55);  w=(w&0x33)+((w>>2)&0x33); return((w&0x0f)+((w>>4)&0x0f));
+inline char COUNTBIT(char a) {
+    char w=a;
+    w=(w&0x55)+((w>>1)&0x55);  w=(w&0x33)+((w>>2)&0x33); return((w&0x0f)+((w>>4)&0x0f));
 }
 
 //----------- Внеклассовые функции для работы с датчиком случайных ------------
 extern void SetRgrain( unsigned long NewRgrain);
 extern unsigned long GetRgrain();
 extern unsigned int GetRandN();
-extern void SetRandMode(BOOL Fl = TRUE);
-extern BOOL GetRandMode();
+extern void SetRandMode(bool Fl = true);
+extern bool GetRandMode();
 
 class CArch;
 
@@ -123,8 +128,8 @@ public:
 //******************************* Constructors\Destructor *******************************
   CBV();
   CBV(const CBV& bvSrc);
-  CBV(BYTE ch, int nRepeat = 1,BOOL Fl = TRUE);
-  CBV(const BYTE* pbt, int nLenBit);
+  CBV(char ch, int nRepeat = 1,BOOL Fl = TRUE);
+  CBV(const char* pbt, int nLenBit);
   CBV(const char* pch);
   ~CBV();
 
@@ -164,31 +169,31 @@ public:
 
 //************************** Operators of advanced assignment ***************************
   const CBV& operator |=(const CBV& bv1);
-  const CBV& operator |=(const BYTE* pbt);
+  const CBV& operator |=(const char* pbt);
   const CBV& operator &=(const CBV& bv1);
-  const CBV& operator &=(const BYTE* pbt);
+  const CBV& operator &=(const char* pbt);
   const CBV& operator ^=(const CBV& bv1);
-  const CBV& operator ^=(const BYTE* pbt);
+  const CBV& operator ^=(const char* pbt);
   const CBV& operator -=(const CBV& bv1);
-  const CBV& operator -=(const BYTE* pbt);
+  const CBV& operator -=(const char* pbt);
   const CBV& operator <<=(int nShift);
   const CBV& operator >>=(int nShift);
 
 //********************************** Logic operations ***********************************
   FSTD(CBV) operator|(const CBV& bv1,const CBV& bv2);
-  FSTD(CBV) operator|(const CBV& bv1,const BYTE* pbt);
-  FSTD(CBV) operator|(const BYTE* pbt,const CBV& bv2);
+  FSTD(CBV) operator|(const CBV& bv1,const char* pbt);
+  FSTD(CBV) operator|(const char* pbt,const CBV& bv2);
   FSTD(CBV) operator&(const CBV& bv1,const CBV& bv2);
-  FSTD(CBV) operator&(const BYTE* pbt,const CBV& bv2);
-  FSTD(CBV) operator&(const CBV& bv1,const BYTE* pbt);
+  FSTD(CBV) operator&(const char* pbt,const CBV& bv2);
+  FSTD(CBV) operator&(const CBV& bv1,const char* pbt);
   FSTD(CBV) operator^(const CBV& bv1,const CBV& bv2);
-  FSTD(CBV) operator^(const BYTE* pbt,const CBV& bv2);
-  FSTD(CBV) operator^(const CBV& bv1,const BYTE* pbt);
+  FSTD(CBV) operator^(const char* pbt,const CBV& bv2);
+  FSTD(CBV) operator^(const CBV& bv1,const char* pbt);
   FSTD(CBV) operator-(const CBV& bv1,const CBV& bv2);
-  FSTD(CBV) operator-(const BYTE* pbt,const CBV& bv2);
-  FSTD(CBV) operator-(const CBV& bv1,const BYTE* pbt);
+  FSTD(CBV) operator-(const char* pbt,const CBV& bv2);
+  FSTD(CBV) operator-(const CBV& bv1,const char* pbt);
   FSTD(CBV) operator~(const CBV& bv2);
-  void Invert(const BYTE* pbt);
+  void Invert(const char* pbt);
   FSTD(CBV) operator<<(const CBV& bv1, int nShift);
   FSTD(CBV) operator>>(const CBV& bv1, int nShift);
   void LoopLeftShift(int nShift);
@@ -197,13 +202,13 @@ public:
 //******************** Operations of weighting, finding and casing **********************
   int CountBit() const;
   int LeftOne(int nNext = -1) const;
-  int LeftOne(BYTE& bt) const;
+  int LeftOne(char& bt) const;
   int RightOne(int nNext = -1) const;
-  int RightOne(BYTE& bt) const;
+  int RightOne(char& bt) const;
 
 //**************************** Operations of concatinations *****************************
   void Concat(const CBV& bv);
-  void Concat(const BYTE* pbt, int nLength);
+  void Concat(const char* pbt, int nLength);
   void Concat(const CBV& bv1,const CBV& bv2);
   void Concat(BOOL Bit=FALSE);
 
@@ -347,9 +352,9 @@ public:
 //********************************** Reading the data ***********************************
 
   BOOL GetBitAt(int nRow,int nColumn) const;
-  BOOL GetBitAt(int nRow,int nColumn,BYTE * mask) const;
+  BOOL GetBitAt(int nRow,int nColumn,char* mask) const;
   BYTE GetByteAt(int nRow,int nIndex) const;
-  BYTE GetByteAt(int nRow,int nIndex,BYTE * mask) const;
+  BYTE GetByteAt(int nRow,int nIndex,char* mask) const;
   BYTE* GetRow(int nIndex) const;
   CBV GetRowBv(int nRow) const;
   CBV GetRowBv(int nIndex,BYTE* mask) const;
@@ -359,10 +364,10 @@ public:
 
 #ifndef _LINUX
   CString BitChar(char One = '1',char Zero = '0',BOOL WithNum=FALSE);
-  void BitChar(CStringArray& StrRes, BOOL WithClear=TRUE, BOOL WithNum=FALSE, 
+  void BitChar(CStringArray& StrRes, BOOL WithClear=TRUE, BOOL WithNum=FALSE,
                char One = '1',char Zero='0');
 #else
-  void BitChar(vector <string>& StrRes, BOOL WithClear=TRUE, BOOL WithNum=FALSE, 
+  void BitChar(vector <string>& StrRes, BOOL WithClear=TRUE, BOOL WithNum=FALSE,
     char One = '1',char Zero='0');
   char* BitChar(char One = '1', char Zero = '0', BOOL WithNum=FALSE);
 #endif
@@ -443,7 +448,7 @@ public:
 
 //******************** Operations of weighting, finding and casing **********************
   int CountBit(int nRow = -1) const;
-  int CountBit(const BYTE * mask,int nRow= -1) const;
+  int CountBit(const char* mask,int nRow= -1) const;
   int LeftOne(int nRow, int nNext = -1) const;
   int LeftOne(int nRow, BYTE& bt) const;
   int LeftOne(int nRow, int nNext, BYTE* mask) const;
@@ -467,7 +472,7 @@ public:
   FSTD(BOOL) operator<(const CBM& bm1,const CBM& bm2);
   FSTD(BOOL) operator>=(const CBM& bm1,const CBM& bm2);
   FSTD(BOOL) operator<=(const CBM& bm1,const CBM& bm2);
-  int CoverRow(int nRow1, int nRow2, const BYTE * mask);
+  int CoverRow(int nRow1, int nRow2, const char* mask);
   int CoverRow(int nRow1, int nRow2);
 
 #ifndef _LINUX
@@ -672,7 +677,7 @@ inline BYTE CBM::GetByteAt(int nRow,int nIndex) const
   return m_pData[nRow][nIndex];
 }
 
-inline BYTE CBM::GetByteAt(int nRow,int nIndex,BYTE * mask) const
+inline BYTE CBM::GetByteAt(int nRow,int nIndex,char* mask) const
 { ASSERT(nIndex >= 0); ASSERT(nRow >= 0);
   ASSERT(nIndex < m_nByteLength); ASSERT(nRow < m_nSize);
   return m_pData[nRow][nIndex] & mask[nIndex];
@@ -686,7 +691,7 @@ inline BOOL CBM::GetBitAt(int nRow,int nColumn) const
 }
 
 
-inline BOOL CBM::GetBitAt(int nRow,int nColumn, BYTE * mask) const
+inline BOOL CBM::GetBitAt(int nRow,int nColumn, char* mask) const
 { ASSERT(nColumn >= 0); ASSERT(nRow >= 0);
   ASSERT(nColumn < m_nBitLength); ASSERT(nRow < m_nSize);
   return ((m_pData[nRow][BIT_BYTE(nColumn)] &

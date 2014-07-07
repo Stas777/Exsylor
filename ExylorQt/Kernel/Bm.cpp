@@ -50,14 +50,13 @@
 #include "BaseBool.h"
 #include "archive.h"
 #else
-#include "../Common/BaseBool.h"
+#include "BaseBool.h"
 #include "../Com_Lib/archive.h"
 #endif
 
 
 #ifndef _LINUX
 
-IMPLEMENT_SERIAL(CBM, CObject, 0)
 
 #ifdef _DEBUG
 #undef THIS_FILE
