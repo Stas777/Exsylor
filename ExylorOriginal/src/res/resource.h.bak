@@ -1,0 +1,98 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Developer Studio generated include file.
+// Used by Exsylor.rc
+//
+#define IDD_ABOUTBOX                    100
+#define IDR_MAINFRAME                   128
+#define IDR_EXSTYPE                     129
+#define IDB_BITMAP1                     130
+#define IDB_BITMAP2                     131
+#define IDB_BITMAP3                     132
+#define IDB_BITMAP4                     133
+#define IDB_BITMAP5                     134
+#define IDB_BITMAP6                     135
+#define IDB_BITMAP7                     136
+#define IDB_BITMAP8                     137
+#define IDB_BITMAP9                     138
+#define IDB_BITMAP10                    139
+#define IDB_BITMAP11                    140
+#define IDB_BITMAP12                    141
+#define IDB_BITMAP13                    142
+#define IDB_BITMAP14                    143
+#define IDB_BITMAP15                    144
+#define IDB_BITMAP16                    145
+#define IDI_DIRECT                      146
+#define IDI_EMPT                        147
+#define IDR_REG_EDIT                    148
+#define IDR_REG_EDIT1                   148
+#define IDR_REG_SCRIPT                  149
+#define IDR_REG_EDIT2                   149
+#define IDR_SCRIPTTYPE                  150
+#define IDI_WORD_SCRIPT                 151
+#define IDI_WORD_ED                     152
+#define IDR_EMPTY                       153
+#define IDR_EXPLAN                      154
+#define IDR_SCROPTTYPE                  156
+#define IDR_WORD_EDIT                   157
+#define IDR_WORD_SCRIPT                 158
+#define ID_VIEW_EXIT                    32771
+#define ID_P_FORMULA                    32773
+#define ID_P_MATRIX                     32774
+#define ID_STEP_NEXT                    32775
+#define ID_STEP_PREV                    32776
+#define ID_STEP_FIRST                   32777
+#define ID_STEP_LAST                    32778
+#define ID_VIEW_EXPLAN_EXIT             32779
+#define ID_KNOW_SAVE                    32780
+#define ID_KNOW_CLOSE                   32781
+#define ID_REG_READ                     32782
+#define ID_REG_WRITE                    32783
+#define ID_REG_INSERT                   32784
+#define ID_REG_ADD                      32785
+#define ID_REG_DEL                      32786
+#define ID_REG_CLEAR                    32787
+#define ID_REG_NEXT                     32788
+#define ID_RECOGN_OBJECT                32789
+#define ID_RECOGN_FULL                  32790
+#define ID_RECOGN_ATR                   32791
+#define ID_RECOGN_VAL                   32792
+#define ID_RECOGN_PROOF                 32793
+#define ID_SYSTEM                       32794
+#define ID_RECOGNITION                  32795
+#define ID_EXPERT                       32796
+#define ID_MODEL_NEW                    32797
+#define ID_MODEL_OPEN                   32798
+#define ID_MODEL_EDIT                   32799
+#define ID_MODEL_DEL                    32800
+#define ID_KNOW_NEW                     32801
+#define ID_KNOW_OPEN                    32802
+#define ID_KNOW_EDIT                    32803
+#define ID_KNOW_DELETE                  32804
+#define ID_KNOW_REDUCT                  32805
+#define ID_KNOW_GEN                     32806
+#define ID_DATA_NEW                     32807
+#define ID_DATA_OPEN                    32808
+#define ID_DATA_EDIT                    32809
+#define ID_DATA_DELETE                  32810
+#define ID_DATA_IND                     32811
+#define ID_DATA_GEN                     32812
+#define ID_DATA_SAVE                    32813
+#define ID_DATA_CLOSE                   32814
+#define ID_DATA_READ_SMP                32815
+#define ID_DATA_WRITE_SMP               32816
+#define ID_DATA_INSERT_SMP              32817
+#define ID_DATA_ADD_SMP                 32818
+#define ID_DATA_DEL_SMP                 32819
+#define ID_DATA_CLEAR_SMP               32820
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_3D_CONTROLS                     1
+#define _APS_NEXT_RESOURCE_VALUE        158
+#define _APS_NEXT_COMMAND_VALUE         32821
+#define _APS_NEXT_CONTROL_VALUE         1000
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif
