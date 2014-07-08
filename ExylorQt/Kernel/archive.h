@@ -1,7 +1,7 @@
 #ifndef ARCH_ROM
 #define ARCH_ROM
 #include <stdio.h>
-#include <string>
+#include <QString>
 
 using namespace std;
 typedef unsigned UINT;
@@ -50,6 +50,7 @@ public:
   CArch& operator<<(unsigned int u);
   CArch& operator<<(short w);
   CArch& operator<<(char ch);
+  CArch& operator<<(QString qstr);
 #ifdef _BIT64
   CArch& operator<<(LONGLONG dwdw);
   CArch& operator<<(ULONGLONG dwdw);
@@ -67,6 +68,7 @@ public:
   CArch& operator>>(unsigned int& u);
   CArch& operator>>(short& w);
   CArch& operator>>(char& ch);
+  CArch& operator>>(QString& qstr);
 #ifdef _BIT64
   CArch& operator>>(LONGLONG& dwdw);
   CArch& operator>>(ULONGLONG& dwdw);

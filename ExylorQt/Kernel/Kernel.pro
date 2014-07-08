@@ -22,13 +22,16 @@ SOURCES += \
     Gener.cpp \
     Bv.cpp \
     Bm.cpp \
-    Archive.cpp
+    Archive.cpp \
+    ScrInit.cpp \
+    Exsylor.cpp
 
 HEADERS += \
     ScrDoc.h \
     BaseBool.h \
     CoverDoc.h \
-    archive.h
+    archive.h \
+    Exsylor.h
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib

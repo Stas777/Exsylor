@@ -1,8 +1,7 @@
 // scrdoc.cpp : implementation of the CExsDoc class
 // 17.05.2007 -------------------------------------
 
-#include "stdafx.h"
-#include <io.h>
+//#include <io.h>
 #include <ctype.h>
 #include <sys\types.h>
 #include <sys\stat.h>
@@ -50,6 +49,7 @@ extern BOOL Reduction(CBM& Matr);
 /////////////////////////////////////////////////////////////////////////////
 // CScriptDoc
 
+    /*
   //{{AFX_MSG_MAP(CScriptDoc)
     ON_UPDATE_COMMAND_UI(ID_FILE_NEW, OnUpdateScriptNew)
     ON_COMMAND(ID_MODEL_EDIT, OnModelEdit)
@@ -132,6 +132,7 @@ extern BOOL Reduction(CBM& Matr);
     ON_UPDATE_COMMAND_UI(ID_P_FORMULA, OnUpdateStepNext)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
+*/
 
 ///////////////////////////////////////////////////////////////////////////////////
 // CScriptDoc construction/destruction

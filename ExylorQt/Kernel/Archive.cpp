@@ -34,6 +34,11 @@ CArch& CArch::operator<<(BYTE by)
   return *this; 
 }
 
+CArch& CArch::operator<<(QString qstr) {
+    Write(&qstr, sizeof(qstr));
+    return *this;
+}
+
 #ifdef _BIT64
 CArch& CArch::operator<<(LONGLONG dwdw)
 { 
@@ -128,6 +133,11 @@ CArch& CArch::operator>>(BYTE& by)
 
   Read(&by, sizeof(BYTE));
   return *this; 
+}
+
+CArch& CArch::operator>>(QString& qstr) {
+    Read(&qstr, sizeof(qstr));
+    return *this;
 }
 
 #ifdef _BIT64
