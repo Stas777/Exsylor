@@ -13,84 +13,71 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="newButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>330</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>New</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="deleteButton">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>330</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Delete</string>
-   </property>
-  </widget>
-  <widget class="QTreeView" name="treeView">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>60</y>
-     <width>151</width>
-     <height>271</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QTabWidget" name="tabWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>511</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>0</number>
-   </property>
-   <widget class="DataDialog" name="dataTab">
-    <attribute name="title">
-     <string>Data</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="knowledgeTab">
-    <attribute name="title">
-     <string>Knowledge</string>
-    </attribute>
-   </widget>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>GroupBox</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="4" column="0" colspan="2">
+       <widget class="QPushButton" name="KnowledgePushButton">
+        <property name="text">
+         <string>Knowledge</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="deleteButton">
+        <property name="text">
+         <string>Delete</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QComboBox" name="comboBox"/>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="dataPushButton">
+        <property name="text">
+         <string>Data</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="newButton">
+        <property name="text">
+         <string>New</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QTreeWidget" name="treeWidget">
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>DataDialog</class>
-   <extends>QWidget</extends>
-   <header location="global">datadialog.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
