@@ -6,7 +6,6 @@
 #include <ctype.h>
 //#include <sys\types.h>
 //#include <sys\stat.h>
-#include "Exsylor.h"
 #include "ScrDoc.h"
 #include "BaseBool.h"
 
@@ -17,12 +16,12 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 extern int nDoms;
 extern CBM MaskDom;
-extern CWordArray* DomVal;   //значность доменов
-extern CWordArray* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
+extern QVector<int>* DomVal;   //значность доменов
+extern QVector<int>* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
 
-extern CStringArray Ins_txt;
+extern QVector<QString> Ins_txt;
 
-void get_tx (int numb_txt,CString& Txt);
+void get_tx (int numb_txt, QString& Txt);
 
 /////////////////////////////////////////////////////////////////////////////
 // scrdocsm.cpp : implementation of the CScriptDoc class for SAMPLE service
@@ -51,39 +50,39 @@ void get_tx (int numb_txt,CString& Txt);
 void CScriptDoc::ForDefSmp()
 { int i,j,s;
   CkAttr* pAttr;
-  CString W;
+  QString W;
 
 // For WordView
-  m_sWord.RemoveAll(); m_sWordCount=0;
+  m_sWord.clear(); m_sWordCount=0;
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
-    for (s=j=0; j<pAttr->m_ValNames.GetSize(); j++) {  // Circle for all values
+    for (s=j=0; j<pAttr->m_ValNames.size(); j++) {  // Circle for all values
       s+=pAttr->m_DFlag.GetBitAt(j);
     }
     if (s==0)   continue;    // Next attribute
-    W='Q'; W+=pAttr->m_sTitle;  m_sWord.Add (W);
-    W=" - "; m_sWord.Add (W);  m_sWordCount++;
+    W='Q'; W+=pAttr->m_sTitle;  m_sWord.append (W);
+    W=" - "; m_sWord.append (W);  m_sWordCount++;
     if (s==1) {    // One value
-      W='V' + pAttr->m_ValNames.GetAt(pAttr->m_DFlag.LeftOne()); m_sWord.Add (W); 
+      W='V' + pAttr->m_ValNames.GetAt(pAttr->m_DFlag.LeftOne()); m_sWord.append (W);
       continue;    // Next attribute   - ( OR )
     }
-    if (s==pAttr->m_ValNames.GetSize()-1) {    // One NO value
-      W="NNot ";   m_sWord.Add (W);  W='V';
-      for (j=0; j<pAttr->m_ValNames.GetSize(); j++)   // Circle for all values
+    if (s==pAttr->m_ValNames.size()-1) {    // One NO value
+      W="NNot ";   m_sWord.append (W);  W='V';
+      for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
         if (!pAttr->m_DFlag.GetBitAt(j)) { W+=pAttr->m_ValNames.GetAt(j); break; }
-      m_sWord.Add (W); // Next attribute   - ( OR )
+      m_sWord.append(W); // Next attribute   - ( OR )
       continue;
     }
-    if (s==pAttr->m_ValNames.GetSize()) {   // Any
-      W="NAny "; m_sWord.Add (W); continue; // Next attribute   - ( OR )
+    if (s==pAttr->m_ValNames.size()) {   // Any
+      W="NAny "; m_sWord.append(W); continue; // Next attribute   - ( OR )
       continue;
     }
-    for (j=0; j<pAttr->m_ValNames.GetSize(); j++)   // Circle for all values
+    for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
       if (pAttr->m_DFlag.GetBitAt(j)) {
-        W='V'; W+=pAttr->m_ValNames.GetAt(j); m_sWord.Add (W);
-        W=" or "; m_sWord.Add (W);
+        W='V'; W+=pAttr->m_ValNames.GetAt(j); m_sWord.append (W);
+        W=" or "; m_sWord.append(W);
       }
-    m_sWord.RemoveAt(m_sWord.GetUpperBound());
+    m_sWord.removeLast();
   }
 }
 
@@ -94,7 +93,7 @@ void CScriptDoc::FormOneSmp(CSample* pSmp)
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
     for (j=0; j<pAttr->m_ValNames.GetSize(); j++) {  // Circle for all values
-      pSmp->m_Values.Add(pAttr->m_DFlag.GetBitAt(j));
+      pSmp->m_Values.append(pAttr->m_DFlag.GetBitAt(j));
     }
     pAttr->m_DFlag.Zero();
   }

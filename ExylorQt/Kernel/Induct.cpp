@@ -2,12 +2,7 @@
 //
 
 #include <math.h>
-#include "stdafx.h"
-#include "exsylor.h"
-#include "MainFrm.h"
-#include "scrdoc.h"
-#include "DiaInd.h"
-#include "FormInd.h"
+#include "ScrDoc.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -377,7 +372,7 @@ wh:
     memmove(New+j1+1,New+j1,k1*sizeof(double));
     
     New[j1]=New0;    pn[j1]=p1;    qn[j1]=qsum;    g_qn++;
-  } /* if на Gr=0.05 */
+  } /* if н  Gr=0.05 */
 hod:
   i=nDoms-1; sum=0;
   if (b[i] == (int)DomVal->GetAt(i)-1)

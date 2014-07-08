@@ -1,25 +1,8 @@
 // scrdoc.cpp : implementation of the CExsDoc class
 // 17.05.2007 -------------------------------------
 
-//#include <io.h>
 #include <ctype.h>
-#include <sys\types.h>
-#include <sys\stat.h>
-#include "Exsylor.h"
-#include "scrdoc.h"
-#include "moddlg.h"
-#include "EditNameDlg.h"
-#include "BlockSelDlg.h"
-#include "GenDat.h"
-#include "GenKnow.h"
-#include "scriptvw.h"
-#include "brview.h"
-#include "trbzview.h"
-#include "treeview.h"
-#include "bmview.h"
-#include "modview.h"
-#include "wordview.h"
-#include "mainfrm.h"
+#include "ScrDoc.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE

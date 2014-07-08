@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef ARCH_ROM
 #define ARCH_ROM
 #include <stdio.h>

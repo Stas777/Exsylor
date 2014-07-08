@@ -1,10 +1,13 @@
 // scrdoc.h : interface of the CScriptDoc class
 // 28.05.97 22:24
 /////////////////////////////////////////////////////////////////////////////
+#pragma once
 
 #include <QString>
 #include <QVector>
 #include <QMap>
+#include "Archive.h"
+#include "BaseBool.h"
 
 
 //------------------------------------------------------------------------
@@ -95,6 +98,7 @@ public:
   CkAttr* GetAt(int nIndex) const;
   void SetAt(int nIndex, CkAttr* newElement);
   int Add(CkAttr* newElement);
+  int GetSize();
   void RemoveAll();
 };
 

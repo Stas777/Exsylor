@@ -7,7 +7,7 @@
 #include <math.h>
 #include "CoverDoc.h"
 #include "ScrDoc.h"
-#include "archive.h"
+#include "Archive.h"
 #include <QString>
 
 #ifdef _DEBUG
@@ -196,4 +196,10 @@ void CkAttrArray::RemoveAll() {
     m_attrArr.clear();
 }
 
+int CkAttrArray::GetSize() {
+    return m_attrArr.size();
+}
+
 /////////////////////////////////////////////////////////////////////////////
+
+
