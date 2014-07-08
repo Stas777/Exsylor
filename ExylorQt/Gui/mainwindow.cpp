@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "aboutexylor.h"
+#include "newfile.h"
+#include <QFileDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -23,4 +25,16 @@ void MainWindow::on_actionAbout_Exsylor_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     this->close();
+}
+
+void MainWindow::on_actionNew_triggered()
+{
+    NewFile *newfile = new NewFile(this);
+    newfile->show();
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open script file"),
+                                                    "./", tr("Script files (*.scr)"));
 }

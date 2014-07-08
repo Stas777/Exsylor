@@ -16,15 +16,18 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     aboutexylor.cpp \
     datadialog.cpp \
-    expertwidget.cpp
+    expertwidget.cpp \
+    newfile.cpp
 
 HEADERS  += \
     aboutexylor.h \
     mainwindow.h \
     datadialog.h \
-    expertwidget.h
+    expertwidget.h \
+    newfile.h
 
 FORMS    += mainwindow.ui \
     aboutexylor.ui \
     datadialog.ui \
-    expertwidget.ui
+    expertwidget.ui \
+    newfile.ui
