@@ -19,3 +19,8 @@ void MainWindow::on_actionAbout_Exsylor_triggered()
     AboutExylor *about = new AboutExylor(this);
     about->show();
 }
+
+void MainWindow::on_actionExit_triggered()
+{
+    this->close();
+}

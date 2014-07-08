@@ -7,7 +7,7 @@ AboutExylor::AboutExylor(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap logo("D:/Stas/University/Projects/Exsylor/ExylorQt/Gui/rsc/Exsylor.ico");
+    QPixmap logo("rsc/Exsylor.ico");
     ui->logo->setPixmap(logo);
 }
 

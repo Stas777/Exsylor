@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>658</width>
-    <height>391</height>
+    <width>695</width>
+    <height>405</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,21 +19,21 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>641</width>
-      <height>321</height>
+      <width>671</width>
+      <height>341</height>
      </rect>
     </property>
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab_expert">
+    <widget class="ExpertWidget" name="expertMode">
      <attribute name="title">
-      <string>Expert</string>
+      <string>Expert Mode</string>
      </attribute>
     </widget>
-    <widget class="QWidget" name="tab_recognize">
+    <widget class="QWidget" name="recognizeMode">
      <attribute name="title">
-      <string>Recognize</string>
+      <string>Recognize Mode</string>
      </attribute>
     </widget>
    </widget>
@@ -43,7 +43,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>658</width>
+     <width>695</width>
      <height>21</height>
     </rect>
    </property>
@@ -64,16 +64,6 @@
    </widget>
    <addaction name="menuNew"/>
    <addaction name="menuAbove"/>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-   <addaction name="actionNew"/>
-   <addaction name="actionOpen"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNew">
@@ -98,6 +88,14 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ExpertWidget</class>
+   <extends>QWidget</extends>
+   <header>expertwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

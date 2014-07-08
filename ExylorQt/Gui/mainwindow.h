@@ -18,6 +18,8 @@ public:
 private slots:
     void on_actionAbout_Exsylor_triggered();
 
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
