@@ -20,6 +20,8 @@ private slots:
 
     void on_KnowledgePushButton_clicked();
 
+    void on_newButton_clicked();
+
 private:
     Ui::ExpertWidget *ui;
 };
