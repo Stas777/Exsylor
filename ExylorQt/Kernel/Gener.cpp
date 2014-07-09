@@ -6,6 +6,8 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
+#include "BaseBool.h"
+
 CBM GenDat(int exp, int nRowD, CBM& MatrK);
 CBM GenKnow(int exp, int nRowK, int Rang, int ver);
 CBV CrRandVect(int ver);
@@ -13,8 +15,8 @@ BOOL CreateReg(int Rang,CBV& Row,CBV& Reg);  //FALSE - з-сть не построена
 
 extern int nDoms;
 extern CBM MaskDom;
-extern CWordArray* DomVal;   //значность доменов
-extern CWordArray* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
+extern vector<int>* DomVal;   //значность доменов
+extern vector<int>* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
 
 //------------------------------------------------------------- GenDat
 //  √енераци€ секционированной матрицы данных
@@ -37,8 +39,8 @@ gen:
     if(n > 32000) break;
     n++;      Row.Zero();
     for(i=0; i<nDoms; i++) { // ѕостроение строки матрицы данных  
-      j = rand() % (int)DomVal->GetAt(i);
-      Row.SetBitAt(j+(int)DomAdr->GetAt(i),1); 
+      j = rand() % (int)DomVal->at(i);
+      Row.SetBitAt(j+(int)DomAdr->at(i),1);
     } 
     for(i=0; i<MatrK.GetCountR(); i++)   /*  ѕроверка на противоречие */ 
       if((MatrK[i] & Row).IsZero()) goto gen;   /* есть противоречие */

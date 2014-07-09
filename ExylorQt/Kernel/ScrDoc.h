@@ -254,12 +254,12 @@ public:
     //void NextView(CRuntimeClass* pViewClass);
 
 //-----------------------include ScrDocExpImp.cpp-----------------
-    void ModelExport();  // Импорт прямо из диалога создания модели!
+/*    void ModelExport();  // Импорт прямо из диалога создания модели!
     void DbExport();
     void DbImport();
     void KbExport();
     void KbImport();
-
+*/
 protected:
     virtual ~CScriptDoc();
     void DeleteContents();

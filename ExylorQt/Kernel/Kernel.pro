@@ -14,16 +14,13 @@ SOURCES += \
     ScrObj.cpp \
     ScrDocSM.cpp \
     ScrDocRg.cpp \
-    ScrDocEx.cpp \
     ScrDocExpImp.cpp \
-    ScrDoc.cpp \
     Proof.cpp \
     Induct.cpp \
     Gener.cpp \
     Bv.cpp \
     Bm.cpp \
-    Archive.cpp \
-    ScrInit.cpp
+    Archive.cpp
 
 HEADERS += \
     ScrDoc.h \

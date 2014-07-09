@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 #include <string>
-#include "archive.h"
+#include "Archive.h"
 #ifdef _MSVC9
 #pragma warning(disable : 4996)
 #endif
@@ -26,13 +26,7 @@ CArch& operator<<(CArch& ar, string S)
 CArch& CArch::operator<<(unsigned u) { return CArch::operator<<((int)u); }
 CArch& CArch::operator<<(short w)    { return CArch::operator<<((WORD)w); }
 CArch& CArch::operator<<(char ch)    { return CArch::operator<<((BYTE)ch); }
-CArch& CArch::operator<<(BYTE by)
-{ 
-  //  if(!IsStoring())
-  //    AfxThrowArchiveException(CArchException::readOnly,m_strFileName);
-  Write(&by, sizeof(BYTE));
-  return *this; 
-}
+
 
 CArch& CArch::operator<<(QString qstr) {
     Write(&qstr, sizeof(qstr));
@@ -123,17 +117,7 @@ CArch& operator>>(CArch& ar, string& S)
 CArch& CArch::operator>>(unsigned& u) { return CArch::operator>>((int&)u); }
 CArch& CArch::operator>>(short& w)    { return CArch::operator>>((WORD&)w); }
 CArch& CArch::operator>>(char& ch)    { return CArch::operator>>((BYTE&)ch); }
-CArch& CArch::operator>>(BYTE& by)
-{ 
-  //   if(!IsLoading())
-  //     AfxThrowArchiveException(CArchException::writeOnly,m_strFileName);
-  //   if (m_lpBufCur + sizeof(BYTE) > m_lpBufMax)
-  //     FillBuffer(UINT(sizeof(BYTE) - (m_lpBufMax - m_lpBufCur)));
-  //   by = *(UNALIGNED BYTE*)m_lpBufCur; m_lpBufCur += sizeof(BYTE); 
 
-  Read(&by, sizeof(BYTE));
-  return *this; 
-}
 
 CArch& CArch::operator>>(QString& qstr) {
     Read(&qstr, sizeof(qstr));

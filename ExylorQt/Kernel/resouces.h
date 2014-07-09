@@ -1,10 +1,6 @@
 #ifndef RESOUCES_H
 #define RESOUCES_H
 
-//{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
-// Used by Exsylor.rc
-//
 #define IDR_MAINFRAME                   2
 #define IDR_EXSTYPE                     3
 #define IDR_REG_SCRIPT                  4

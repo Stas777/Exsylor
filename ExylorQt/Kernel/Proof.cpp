@@ -1,6 +1,6 @@
 // GenDat.cpp : implementation file
 // 18.05.2007 -----------------------
-
+/*
 #include "CoverDoc.h"
 
 int Proof(CBM& Matr,CBV& VectRec,CWordArray& StepProof);
@@ -227,3 +227,4 @@ BOOL BuildNewStep(CBM& SDiz,CBV& MaskCol,struct pr *Proof,CWordArray& StepProof)
   return FALSE;  
 }
 
+*/

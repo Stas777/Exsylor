@@ -36,13 +36,10 @@
 #include <assert.h>
 #include <limits.h>
 
-#ifdef _JOINT
+
 #include "BaseBool.h"
-#include "archive.h"
-#else
-#include "../Common/BaseBool.h"
-#include "../Com_Lib/archive.h"
-#endif
+#include "Archive.h"
+
 
 #ifndef _LINUX
 #ifdef _DEBUG
@@ -210,7 +207,7 @@ CBV CBV::GenRbv (int nCol)
   unsigned int nn;
   m_nBitLength = n*a;
   m_nByteLength = m_nAllocLength = LEN_BYTE(n*a);
-  m_bVect = new unsigned char[m_nByteLength];
+  m_bVect = new char[m_nByteLength];
   for (i=0; i<n-1; i++) 
   {
     nn=GetRandN(); 
@@ -241,7 +238,7 @@ CBV CBV::GenRbvN(int n)
   Empty();
   m_nBitLength = n;
   m_nByteLength = m_nAllocLength = LEN_BYTE(n);
-  m_bVect = new unsigned char[m_nByteLength];
+  m_bVect = new char[m_nByteLength];
   k = LEN_LONG(n);
   Syn = (unsigned long *) (m_bVect);
   for(i=0; i<k-1; i++)

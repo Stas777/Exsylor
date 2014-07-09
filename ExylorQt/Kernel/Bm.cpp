@@ -46,13 +46,9 @@
 #include <stdarg.h>
 #define SIZE_T_MAX  UINT_MAX            /* max size for a size_t */
 
-#ifdef _JOINT
+
 #include "BaseBool.h"
-#include "archive.h"
-#else
-#include "BaseBool.h"
-#include "../Com_Lib/archive.h"
-#endif
+#include "Archive.h"
 
 
 #ifndef _LINUX

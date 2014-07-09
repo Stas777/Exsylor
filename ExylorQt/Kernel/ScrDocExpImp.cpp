@@ -1,13 +1,12 @@
 // scrdocExpImp.cpp : implementation of the CExsDoc class
 // 30.05.2007 -------------------------------------
-
-#include <io.h>
+/*
 #include <ctype.h>
-#include <sys\types.h>
-#include <sys\stat.h>
-#include "Exsylor.h"
-#include "scrdoc.h"
-#include "mainfrm.h"
+
+
+
+#include "ScrDoc.h"
+
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -15,13 +14,13 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 #endif
 
 /////////////////////////////////////////////////////////////////////////////
-void GetFileLine(CFile& f, int& len, CString& s) 
+void GetFileLine(FILE *f, int& len, QString& s)
 {
   char b[2];
   s="";
   while (len>0) {
-    f.Read(b,1); len--;
-    if (b[0]=='\r') { f.Read(b,1); len--; return; }  // Пропускаем еще \n
+     fscanf(f,"%c",&b[1]); len--;
+      if (b[0]=='\r') { fscanf(f,"%c",&b[1]); len--; return; }  // Пропускаем еще \n
     else s+=b[0];
   }
 }
@@ -42,15 +41,15 @@ void GetFileLine(CFile& f, int& len, CString& s)
 // ****   ****   ****    ****     ******  ********
 
 //------------------------------------------------------------------ModelExport
-void CScriptDoc::ModelExport() 
+/*void CScriptDoc::ModelExport()
 {
-  CString W,W0;
+  QString W,W0;
   int i, j;
   CkAttr* pAttr;
 
 	W = "Model script (*.mod)|*.mod|All files (*.*)|*.*||" ;
   W0 = "mod";
-  CString FileName, FileExt;
+  QString FileName, FileExt;
   CFileDialog dlg(FALSE, W0, "Model",
 	  OFN_HIDEREADONLY  | OFN_SHOWHELP | OFN_OVERWRITEPROMPT,
 		W, AfxGetMainWnd());
@@ -81,7 +80,7 @@ void CScriptDoc::ModelExport()
   }
   END_CATCH
 }
-
+*/
 
 /////////////////////////////////////////////////////////////////////////////////
 //   ****       ****   ********   ****
@@ -92,6 +91,7 @@ void CScriptDoc::ModelExport()
 //   **  **   **  **      **    **  **
 //   ****    **    **    ****  **    **
 //------------------------------------------------------------------DBExport
+/*
 void CScriptDoc::DbExport() 
 {
   CString W,W0;
@@ -339,3 +339,4 @@ void CScriptDoc::KbImport()
   SetModifiedFlag();
   UpdateAllViews(NULL,NULL,NULL);
 }
+*/
