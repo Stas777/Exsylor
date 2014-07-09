@@ -1,14 +1,11 @@
 // scrdoc.cpp : implementation of the CExsDoc class
 // 17.05.2007 -------------------------------------
 
-#include "stdafx.h"
-#include <io.h>
 #include <ctype.h>
-#include <sys\types.h>
-#include <sys\stat.h>
-#include "Exsylor.h"
-#include "scrdoc.h"
-#include "mainfrm.h"
+#include "ScrDoc.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -17,12 +14,12 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 extern int nDoms;
 extern CBM MaskDom;
-extern CWordArray* DomVal;   //значность доменов
-extern CWordArray* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
+extern QVector<int>* DomVal;   //значность доменов
+extern QVector<int>* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
 
-extern CStringArray Ins_txt;
+extern QVector<QString>Ins_txt;
 
-void get_tx (int numb_txt,CString& Txt);
+void get_tx (int numb_txt,QString& Txt);
 
 /////////////////////////////////////////////////////////////////////////////
 // Work with explanation:
@@ -48,7 +45,7 @@ void get_tx (int numb_txt,CString& Txt);
 /*--------------------------------------*/
 /*  Prepare text of explanation BEG_Z   */
 /*--------------------------------------*/
-CString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
+QString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
 /* n=0 - begin of value proof 1->0; 
    n=1 - explanation 1->1
    n=2 - explanation for valid value; 
@@ -66,37 +63,37 @@ CString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
   int k;                 // Get the data for the specific node.
   WORD w;
   char kst[5]; //,alf[5],set[400],buf5[400],pole[400],pole1[5];
-  CString set,alf,buf5;
-  CString buf;
+  QString set,alf,buf5;
+  QString buf;
   CkAttr* pAttr;  
-  CString W,W1;
+  QString W,W1;
   CBV bv, bv0;
-  Ins_txt.RemoveAll();
+  Ins_txt.clear();
   if (atr>=0) {
     pAttr = m_pAttrObj.GetAt(atr);
     if (val>=0) // Values name
-        Ins_txt.Add(pAttr->m_ValNames.GetAt(val));
-    else  Ins_txt.Add("");
+        Ins_txt.append(pAttr->m_ValNames.at(val));
+    else  Ins_txt.append("");
   
     if (atr>=0) // Attributes name
-        Ins_txt.SetAtGrow(1,pAttr->m_sTitle);
-    else  Ins_txt.SetAtGrow(1,"");
+        Ins_txt.replace(1,pAttr->m_sTitle);
+    else  Ins_txt.replace(1,"");
   }  
   
-  Ins_txt.Add("");   //2   set
-  Ins_txt.Add("");   //3   kst
-  Ins_txt.Add("");   //4   alf
-  Ins_txt.Add("");   //5   buf5
-  Ins_txt.Add("");   //6   pole
-  Ins_txt.Add("");   //7   pole1
-  Ins_txt.Add("");   //8 
-  Ins_txt.Add("");   //9   set
+  Ins_txt.append("");   //2   set
+  Ins_txt.append("");   //3   kst
+  Ins_txt.append("");   //4   alf
+  Ins_txt.append("");   //5   buf5
+  Ins_txt.append("");   //6   pole
+  Ins_txt.append("");   //7   pole1
+  Ins_txt.append("");   //8
+  Ins_txt.append("");   //9   set
  
  switch(n) {
    case 0:     // Begin of proof for value
-     itoa(m_NumStep,kst,10); W = kst; Ins_txt.SetAt(3,W);
-     if (m_NumStep==1)  Ins_txt.SetAt(4,"");
-     else             Ins_txt.SetAt(4,"s");
+     snprintf(kst, 10, "%d", m_NumStep); W = kst; Ins_txt.replace(3,W);
+     if (m_NumStep==1)  Ins_txt.replace(4,"");
+     else             Ins_txt.replace(4,"s");
           
      get_tx(IDS_L_NOT_VAL,buf); get_tx(IDS_L_NOT_VAL_1,buf); get_tx(IDS_L_NOT_VAL_2,buf);
      get_tx(IDS_L_LEN_PROOF,buf);
@@ -113,68 +110,70 @@ CString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
        W+="(^"; W += pAttr->m_sTitle + " - ";
        for (j=0; j<(int)m_DomVal[i]; j++)
          if (bv.GetBitAt(m_DomAdr[i]+j)) break;
-       if (j== (int)m_DomVal[i]) { W1.LoadString(IDS_ANY_VAL);W+=W1+"^), "; }
-       else  W+=pAttr->m_ValNames.GetAt(j)+"^), ";
+       if (j== (int)m_DomVal[i]) { W1.append(IDS_ANY_VAL);W+=W1+"^), "; }
+       else  W+=pAttr->m_ValNames.at(j)+"^), ";
      }
-     W = W.Left(W.GetLength()-2); Ins_txt.SetAt(2,W);
+     W = W.left(W.size()-2); Ins_txt.replace(2,W);
      get_tx(IDS_L_VALID_SET,buf); break;
 
    case 3:      // 0-proof for value
-     itoa(m_ActStep,kst,10); W = kst; Ins_txt.SetAt(3,W);
+     snprintf(kst, 10, "%d", m_ActStep);
+     W = kst; Ins_txt.insert(3,W);
      bv = m_Matr.GetRowBv(m_ActStep);
      W=""; bv0.Empty(); bv0=m_Answer; m_Answer = bv;
-     if_diz(bv,W); Ins_txt.SetAt(2,W); m_Answer = bv0;
-     FormObj(W); Ins_txt.SetAt(4,W);
+     if_diz(bv,W); Ins_txt.insert(2,W); m_Answer = bv0;
+     FormObj(W); Ins_txt.insert(4,W);
      get_tx(IDS_L_0_PROOF_VAL,buf); get_tx(IDS_L_0_PROOF_VAL2,buf);
      break;
 
    case 4:      // Begin proof for contradiction
-     itoa(m_NumStep,kst,10); W = kst; Ins_txt.SetAt(3,W);
-     if (m_NumStep==1)  Ins_txt.SetAt(4,"");
-     else               Ins_txt.SetAt(4,"s");
-     FormCon(W);      Ins_txt.SetAt(2,W);
+     snprintf(kst, 10, "%d", m_NumStep);
+     W = kst; Ins_txt.insert(3,W);
+     if (m_NumStep==1)  Ins_txt.insert(4,"");
+     else               Ins_txt.insert(4,"s");
+     FormCon(W);      Ins_txt.insert(2,W);
      get_tx(IDS_L_PROOF_CONTRA,buf);
      get_tx(IDS_L_PROOF_CONTRA_1,buf);
      get_tx(IDS_L_LEN_PROOF,buf);
      break;
 
   case 5:    //// 0-proof for attribute
-     h=0;W=""; w = m_TreeRow.GetAt(m_ActDRow); j = LOBYTE(w); k = HIBYTE(w);
+     h=0;W=""; w = m_TreeRow.at(m_ActDRow); j = LOBYTE(w); k = HIBYTE(w);
      pAttr = m_pAttrObj.GetAt(k);
      bv0 =  m_Vect.Extract(m_DomAdr[k], m_DomVal[k]);
      bv0 ^=pAttr->m_DFlag;
      for (j=0; j<(int)m_DomVal[k]; j++)
-       if (bv0.GetBitAt(j)) { h++; W+=pAttr->m_ValNames.GetAt(j)+", "; }
-     W = W.Left(W.GetLength()-2); Ins_txt.SetAt(5,W);
-     if (h==1) { Ins_txt.SetAt(4,""); Ins_txt.SetAt(6,"is");}
-     else      { Ins_txt.SetAt(4,"s"); Ins_txt.SetAt(6,"are");}
+       if (bv0.GetBitAt(j)) { h++; W+=pAttr->m_ValNames.at(j)+", "; }
+     W = W.left(W.size()-2); Ins_txt.insert(5,W);
+     if (h==1) { Ins_txt.insert(4,""); Ins_txt.insert(6,"is");}
+     else      { Ins_txt.insert(4,"s"); Ins_txt.insert(6,"are");}
      
-     itoa(m_ActStep,kst,10); W = kst; Ins_txt.SetAt(3,W);
+     snprintf(kst, 10, "%d", m_ActStep); W = kst; Ins_txt.insert(3,W);
      bv = m_Matr.GetRowBv(m_ActStep);
      W=""; bv0.Empty(); bv0=m_Answer; m_Answer = bv;
-     if_diz(bv,W); Ins_txt.SetAt(2,W); m_Answer = bv0;
-     FormObj(W); Ins_txt.SetAt(7,W);
+     if_diz(bv,W); Ins_txt.insert(2,W); m_Answer = bv0;
+     FormObj(W); Ins_txt.insert(7,W);
      get_tx(IDS_L_0_PROOF_ATR,buf); break;
 
    case 6:   // Begin proof for attribute
-     h=0;W=""; w = m_TreeRow.GetAt(m_ActDRow); j = LOBYTE(w); k = HIBYTE(w);
+     h=0;W=""; w = m_TreeRow.at(m_ActDRow); j = LOBYTE(w); k = HIBYTE(w);
      pAttr = m_pAttrObj.GetAt(k);
      bv0 =  m_Vect.Extract(m_DomAdr[k], m_DomVal[k]);
      bv0 ^=pAttr->m_DFlag;                             // List new 0-value in k-atr
      for (j=0; j<(int)m_DomVal[k]; j++)
-       if (bv0.GetBitAt(j)) { h++; W+=pAttr->m_ValNames.GetAt(j)+", "; }
-     W = W.Left(W.GetLength()-2); Ins_txt.SetAt(5,W);
-     if (h==1) { Ins_txt.SetAt(4,""); Ins_txt.SetAt(6,"is");}
-     else      { Ins_txt.SetAt(4,"s"); Ins_txt.SetAt(6,"are");}
+       if (bv0.GetBitAt(j)) { h++; W+=pAttr->m_ValNames.at(j)+", "; }
+     W = W.left(W.size()-2); Ins_txt.insert(5,W);
+     if (h==1) { Ins_txt.insert(4,""); Ins_txt.insert(6,"is");}
+     else      { Ins_txt.insert(4,"s"); Ins_txt.insert(6,"are");}
      W="^";
      for (j=0; j<(int)m_DomVal[k]; j++)
-       if (bv0.GetBitAt(j)) { W+=pAttr->m_ValNames.GetAt(j)+"^ or ^"; }
-     W = W.Left(W.GetLength()-5); Ins_txt.SetAt(2,W);
+       if (bv0.GetBitAt(j)) { W+=pAttr->m_ValNames.at(j)+"^ or ^"; }
+     W = W.left(W.size()-5); Ins_txt.insert(2,W);
      get_tx(IDS_L_PROOF_ATR0,buf);
      get_tx(IDS_L_NOT_VAL_1,buf);
-     itoa(m_NumStep,kst,10); W = kst; Ins_txt.SetAt(3,W);
-     if (m_NumStep==1)  Ins_txt.SetAt(4,"");
-     else             Ins_txt.SetAt(4,"s");
+     snprintf(kst, 10, "%d", m_NumStep); W = kst; Ins_txt.insert(3,W);
+     if (m_NumStep==1)  Ins_txt.insert(4,"");
+     else             Ins_txt.insert(4,"s");
      get_tx(IDS_L_LEN_PROOF,buf); break;
 
    case 7:  
@@ -185,17 +184,17 @@ CString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
      //bv0 ^=pAttr->m_DFlag;
      //for (j=0; j<(int)m_DomVal[k]; j++)
 //       if (bv0.GetBitAt(j)) { h++; W+=pAttr->m_ValNames.GetAt(j)+" or "; }
-  //   W = W.Left(W.GetLength()-4); Ins_txt.SetAt(5,W);
-    // if (h==1) { Ins_txt.SetAt(4,""); Ins_txt.SetAt(6,"is");}
-    // else      { Ins_txt.SetAt(4,"s"); Ins_txt.SetAt(6,"are");}
+  //   W = W.Left(W.GetLength()-4); Ins_txt.insert(5,W);
+    // if (h==1) { Ins_txt.insert(4,""); Ins_txt.insert(6,"is");}
+    // else      { Ins_txt.insert(4,"s"); Ins_txt.insert(6,"are");}
      
-     itoa(m_StepProof[m_StepProof.GetUpperBound()-3],kst,10); W = kst; Ins_txt.SetAt(5,W);
-     itoa(m_StepProof[m_StepProof.GetUpperBound()-2],kst,10); W = kst; Ins_txt.SetAt(3,W);
-     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.GetUpperBound()-3]);
-     W=""; if_diz(bv,W); Ins_txt.SetAt(6,W);
+     snprintf(kst, 10, "%d", m_StepProof.size()-4); W = kst; Ins_txt.insert(5,W);
+     snprintf(kst, 10, "%d", m_StepProof.size()-3); W = kst; Ins_txt.insert(3,W);
+     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.size()-3]);
+     W=""; if_diz(bv,W); Ins_txt.replace(6,W);
      bv.Empty();
-     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.GetUpperBound()-2]);
-     W=""; if_diz(bv,W); Ins_txt.SetAt(2,W);     //if_diz(con,pole); if_diz(vec,set);
+     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.size()-3]);
+     W=""; if_diz(bv,W); Ins_txt.replace(2,W);     //if_diz(con,pole); if_diz(vec,set);
      get_tx(IDS_L_STATEM,buf);
      get_tx(IDS_L_STATEM_3,buf);
      break;
@@ -214,13 +213,13 @@ CString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
      get_tx(13,buf); break;
 */
    case 9:    // End of proof for contradiction
-     itoa(m_StepProof[m_StepProof.GetUpperBound()-3],kst,10); W = kst; Ins_txt.SetAt(5,W);
-     itoa(m_StepProof[m_StepProof.GetUpperBound()-2],kst,10); W = kst; Ins_txt.SetAt(3,W);
-     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.GetUpperBound()-3]);
-     W=""; if_diz(bv,W); Ins_txt.SetAt(6,W);
+     snprintf(kst, 10, "%d", m_StepProof.size()-4); W = kst; Ins_txt.insert(5,W);
+     snprintf(kst, 10, "%d", m_StepProof.size()-3); W = kst; Ins_txt.insert(3,W);
+     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.size()-4]);
+     W=""; if_diz(bv,W); Ins_txt.insert(6,W);
      bv.Empty();
-     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.GetUpperBound()-2]);
-     W=""; if_diz(bv,W); Ins_txt.SetAt(2,W);     //if_diz(con,pole); if_diz(vec,set);
+     bv = m_MatrAndObj.GetRowBv(m_StepProof[m_StepProof.size()-3]);
+     W=""; if_diz(bv,W); Ins_txt.insert(2,W);     //if_diz(con,pole); if_diz(vec,set);
      
      get_tx(IDS_L_STATEM,buf);
      get_tx(IDS_L_STATEM_4,buf); 
@@ -251,26 +250,26 @@ CString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
 }
 
 //-------------------------------------------------------------
-void  CScriptDoc::FormCon(CString& W)
+void  CScriptDoc::FormCon(QString& W)
 { int i,j;
  CkAttr* pAttr;  
- CString W1;
+ QString W1;
  W=""; 
  for (i=0; i<m_nDom;  i++,W+=" and ")  { 
    pAttr = m_pAttrObj.GetAt(i);
    if ((j=pAttr->m_DFlag.CountBit())==0) continue;
    if (j==(int)m_DomVal[i]) 
-     { W1.LoadString(IDS_ANY_VAL);W+="^"+pAttr->m_sTitle; W+=" - "+W1; W+="^"; continue; }
+     { W1.append(IDS_ANY_VAL);W+="^"+pAttr->m_sTitle; W+=" - "+W1; W+="^"; continue; }
    OneAttrib(W,pAttr->m_DFlag,pAttr, j);
  }
- W = W.Left(W.GetLength()-5);
+ W = W.left(W.size()-5);
 }
 
 //-------------------------------------------------------------
-void  CScriptDoc::FormObj(CString& W)
+void  CScriptDoc::FormObj(QString& W)
 { int i,j;
  CkAttr* pAttr;  
- CString W1;
+ QString W1;
  W=""; 
  for (i=0; i<m_nDom;  i++,W+=" and ")  { 
    CBV bv;
@@ -278,28 +277,28 @@ void  CScriptDoc::FormObj(CString& W)
    bv = m_Vect.Extract(m_DomAdr[i],m_DomVal[i]);
    if ((j=bv.CountBit())==0) continue;
    if (j==(int)m_DomVal[i]) 
-     { W1.LoadString(IDS_ANY_VAL);W+="^"+pAttr->m_sTitle; W+=" - "+W1; W+="^"; continue; }
+     { W1.append(IDS_ANY_VAL);W+="^"+pAttr->m_sTitle; W+=" - "+W1; W+="^"; continue; }
    OneAttrib(W,bv,pAttr, j);
  }
- W = W.Left(W.GetLength()-5);
+ W = W.left(W.size()-5);
 }
 
 
 //-------------------------------------------------------------
-void CScriptDoc::OneAttrib(CString& W,CBV& bv,CkAttr* pAttr, int j)
-{ CString W1;
+void CScriptDoc::OneAttrib(QString& W,CBV& bv,CkAttr* pAttr, int j)
+{ QString W1;
  W+="^"+pAttr->m_sTitle; W+=" - ";
  if (j==1) {
    for (j=0; j<bv.GetBitLength(); j++) if (bv.GetBitAt(j)) break;
-   W+=pAttr->m_ValNames.GetAt(j); W+="^"; return;
+   W+=pAttr->m_ValNames.at(j); W+="^"; return;
  }  
  if (j==bv.GetBitLength()-1) {
    W+="not ";
    for (j=0; j<bv.GetBitLength(); j++) if (!bv.GetBitAt(j)) break;
-   W+=pAttr->m_ValNames.GetAt(j); W+="^"; return;  
+   W+=pAttr->m_ValNames.at(j); W+="^"; return;
  }
- for (j=0; j<bv.GetBitLength(); j++) if (bv.GetBitAt(j)) W+=pAttr->m_ValNames.GetAt(j)+" or ";  
- W = W.Left(W.GetLength()-4); W+="^";
+ for (j=0; j<bv.GetBitLength(); j++) if (bv.GetBitAt(j)) W+=pAttr->m_ValNames.at(j)+" or ";
+ W = W.left(W.size()-4); W+="^";
 }
 
 /*************************************************/
@@ -309,12 +308,12 @@ void CScriptDoc::OneAttrib(CString& W,CBV& bv,CkAttr* pAttr, int j)
 //----------------------------------------------------------------------
 //  IF_DIZ
 //----------------------------------------------------------------------
-void CScriptDoc::if_diz (CBV& vect,CString& form)      /* дизъюнкт */
+void CScriptDoc::if_diz (CBV& vect,QString& form)      /* дизъюнкт */
 { int i,i1,i2=-1,j,zer,one,min;
   CBV msk(vect);
   CBV Wbv,Wbv0;
   CkAttr* pAttr;  
-  CString s;
+  QString s;
  // msk=malloc(numb_pr*2);  vect_msk (vect,msk); s[0]='\0'; min=16;
  /* преобразование маски */
  msk&=m_Answer;
@@ -359,7 +358,7 @@ void CScriptDoc::if_diz (CBV& vect,CString& form)      /* дизъюнкт */
 /*              DIZ_FORM                */
 /*--------------------------------------*/
 
-void CScriptDoc::Diz_form (CBV& msk, int i, int j, CString s,CString& form)
+void CScriptDoc::Diz_form (CBV& msk, int i, int j, QString s,QString& form)
         /* номер признака для конъюнкта *//* номер "1" или "0" в маске    */
         /* "не" или " " *//*  для формулы */
 { int i1;
@@ -389,29 +388,30 @@ void CScriptDoc::Diz_form (CBV& msk, int i, int j, CString s,CString& form)
     OneAttrib(form,Wbv0,pAttr, j);
     form+=" or ";            /* BTX get_btx(3,10)*/
   }
-  form = form.Left(form.GetLength()-4); return;
+  form = form.left(form.size()-4); return;
 }
 
 //---------------------------------------------------------
 // IF_4: matr- M&Object, i- number of step
 //---------------------------------------------------------
-CString CScriptDoc::if_4(CBM matr,int i) 
+QString CScriptDoc::if_4(CBM matr,int i)
 { char buf[100];
   CBV Wbv; 
-  CString form;
+  QString form;
  form="Step ";                                                     /* BTX get_btx(3,1)*/
- itoa(i+1,buf,10); form+=buf; form+=": from (";                    /* BTX get_btx(3,2)*/
- itoa(m_StepProof[i*4],buf,10);  form+=buf; form+=") and (";       /* BTX get_btx(3,3)*/
- itoa(m_StepProof[i*4+1],buf,10);  form+=buf; form+=") follows ("; /* BTX get_btx(3,4)*/
- itoa(m_StepProof[i*4+3],buf,10);  form+=buf;form+=")\n";
- itoa(m_StepProof[i*4],buf,10); form+=" ("; form+=buf; form+="): ";
+
+ snprintf(buf, 10, "%d", i+1); form+=buf; form+=": from (";                    /* BTX get_btx(3,2)*/
+ snprintf(buf, 10, "%d", m_StepProof.at(i*4));  form+=buf; form+=") and (";       /* BTX get_btx(3,3)*/
+ snprintf(buf, 10, "%d", m_StepProof.at(i*4+1));  form+=buf; form+=") follows ("; /* BTX get_btx(3,4)*/
+ snprintf(buf, 10, "%d", m_StepProof.at(i*4+3));  form+=buf;form+=")\n";
+ snprintf(buf, 10, "%d", m_StepProof.at(i*4)); form+=" ("; form+=buf; form+="): ";
  Wbv = matr.GetRowBv(m_StepProof[i*4]);
  if_diz(Wbv,form);
- form+=",\n ("; itoa(m_StepProof[i*4+1],buf,10); form+=buf; form+="): ";
- Wbv = matr.GetRowBv(m_StepProof[i*4+1]);
+ form+=",\n ("; snprintf(buf, 10, "%d", m_StepProof.at(i*4+1)); form+=buf; form+="): ";
+ Wbv = matr.GetRowBv(m_StepProof.at(i*4+1));
  if_diz(Wbv,form);
  form+=",\n =======================================\n ("; /* BTX get_btx(3,5)*/
- itoa(m_StepProof[i*4+3],buf,10); form+=buf; form+="): ";
+ snprintf(buf, 10, "%d", m_StepProof.at(i*4+3)); form+=buf; form+="): ";
  Wbv = matr.GetRowBv(m_StepProof[i*4+3]);
  if_diz(Wbv,form); 
  return (form);
@@ -423,19 +423,19 @@ CString CScriptDoc::if_4(CBM matr,int i)
 /*-----------------------------------------------------------*/
 void CScriptDoc::PutMatrixProof()
 { char buf[16];
- CString form;
+ QString form;
  CBV Wbv;
  form="Step ";                                                             /* BTX get_btx(3,1)*/
- itoa(m_ActStep+1,buf,10); 
+ snprintf(buf, 10, "%d", m_ActStep+1);
  form+=buf; form+=": from (";                    /*  BTX get_btx(3,2)*/
- itoa(m_StepProof[m_ActStep*4],buf,10); 
+ snprintf(buf, 10, "%d", m_ActStep*4);
  form+=buf; form+=") and (";       /* BTX get_btx(3,3)*/
- itoa(m_StepProof[m_ActStep*4+1],buf,10);
+ snprintf(buf, 10, "%d", m_ActStep*4+1);
  form+=buf; form+=") follows ("; /* BTX get_btx(3,4)*/
- itoa(m_StepProof[m_ActStep*4+3],buf,10);
+ snprintf(buf, 10, "%d", m_ActStep*4+3);
  form+=buf; form+=")\n";
  //itoa(m_StepProof[m_ActStep*4],buf,10); 
- sprintf(buf,"%03u",m_StepProof[m_ActStep*4]);
+ snprintf(buf,"%d",m_StepProof[m_ActStep*4]);
  form+=" ("; form+=buf; form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4]);
  Wbv&=m_Answer;
@@ -443,7 +443,7 @@ void CScriptDoc::PutMatrixProof()
  
  form+=",\n ("; 
  //itoa(m_StepProof[m_ActStep*4+1],buf,10); 
- sprintf(buf,"%03u",m_StepProof[m_ActStep*4+1]);
+ snprintf(buf,"%d",m_StepProof[m_ActStep*4+1]);
  
  form+=buf; form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+1]);
@@ -452,7 +452,7 @@ void CScriptDoc::PutMatrixProof()
  
  form+=",\n ==============================================================================\n ("; /* BTX get_btx(3,5)*/
  //itoa(m_StepProof[m_ActStep*4+3],buf,10); 
- sprintf(buf,"%03u",m_StepProof[m_ActStep*4+3]);
+ snprintf(buf,"%03u",m_StepProof[m_ActStep*4+3]);
  form+=buf; form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+3]);
  Wbv&=m_Answer;
@@ -463,13 +463,13 @@ void CScriptDoc::PutMatrixProof()
 }
 
 /********************************************************/
-void CScriptDoc::get_vct(CString& form,CBV& vct0,int pr)
+void CScriptDoc::get_vct(QString& form,CBV& vct0,int pr)
 { int k;
   for (k=0; k<m_nDom; k++) {
     CBV bv;
     bv=vct0.Extract(m_DomAdr[k],m_DomVal[k]);
     if (pr==k) form +="^";
-    form += bv.BitChar('1','0')+" "; 
+    form += bv.BitChar('1','0')+" ";
     if (k==pr) form +="^";
   }  
   return;
@@ -484,12 +484,12 @@ void CScriptDoc::PutFormulaProof()
   char buf0[10];
   CkAttr* pAttr;  
   CBV Wbv,Wbv0;
-  CString buf,form;
+  QString buf,form;
   glob = m_StepProof[m_ActStep*4+2];
  pAttr = m_pAttrObj.GetAt(glob);
  
- form.LoadString(IDS_L_PROOF_ADD);      /* BTX get_btx(3,6) */
- itoa(m_StepProof[m_ActStep*4],buf0,10);  form+=buf0; form+="): ";
+ form.append(IDS_L_PROOF_ADD);      /* BTX get_btx(3,6) */
+ snprintf(buf0, 10, "%d",m_StepProof[m_ActStep*4]); form+=buf0; form+="): ";
  msk1= m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4]);
  msk=msk1.Extract(m_DomAdr[glob],m_DomVal[glob]);
 
@@ -515,7 +515,7 @@ void CScriptDoc::PutFormulaProof()
 rfi0:
  
  msk1= m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4]);
- form+=",\n(";  itoa(m_StepProof[m_ActStep*4+1],buf0,10); form+=buf0; form+="): ";
+ form+=",\n(";  snprintf(buf0,10,"%d",m_StepProof[m_ActStep*4+1]); form+=buf0; form+="): ";
  msk2= m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+1]);
  
  msk=msk2.Extract(m_DomAdr[glob],m_DomVal[glob]);
@@ -540,12 +540,15 @@ rfi0:
  buf=""; Diz_form(msk2,glob,100,buf,form);
 
 rfi:  msk2= m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+1]);
- if (s1==1 && s2==1) { buf.LoadString(IDS_L_PROOF_ADD3); form+=buf; return; }  /* BTX get_btx(1,6)*/
+ buf.clear();
+ if (s1==1 && s2==1) { buf.append(IDS_L_PROOF_ADD3); form+=buf; return; }  /* BTX get_btx(1,6)*/
  if (s1==1 || s2==1) { 
-   buf.LoadString(IDS_L_PROOF_ADD0); form+=buf;   /* BTX get_btx(3,8)*/
+     buf.clear();
+   buf.append(IDS_L_PROOF_ADD0); form+=buf;   /* BTX get_btx(3,8)*/
    form+="       "; msk1 &= ~MaskDom.GetRowBv(glob); goto rf4;
  }
- buf.LoadString(IDS_L_PROOF_ADD1);  form+=buf;    /* BTX get_btx(3,9)*/
+ buf.clear();
+ buf.append(IDS_L_PROOF_ADD1);  form+=buf;    /* BTX get_btx(3,9)*/
  form+="       ";
  
  Wbv =(msk1&msk2)&MaskDom.GetRowBv(glob);
@@ -570,8 +573,8 @@ rfi:  msk2= m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+1]);
    msk1|= Wbv;
    form+="^"+pAttr->m_sTitle; form+="^ - ^";
    for (j=0; j<(int)m_DomVal[glob]; j++)
-     { form+=pAttr->m_ValNames.GetAt(j); form+="^ or ^";} /* BTX */
-   form=form.Left(form.GetLength()-5);
+     { form+=pAttr->m_ValNames.at(j); form+="^ or ^";} /* BTX */
+   form=form.left(form.size()-5);
  }
  form+=",\n then\n       ";                     /* BTX get_btx(3,12) */
 
@@ -586,8 +589,9 @@ rf4: msk2 &= ~MaskDom.GetRowBv(glob); msk1 |= msk2;       /*  склеивание масок  
     }
  }
  
- form=form.Left(form.GetLength()-4); //????? form[strlen(form)-5]='\0';
- buf.LoadString(IDS_L_PROOF_ADD2); form+=buf;       /* BTX get_btx(3,13)*/
+ form=form.left(form.size()-4); //????? form[strlen(form)-5]='\0';
+ buf.clear();
+ buf.append(IDS_L_PROOF_ADD2); form+=buf;       /* BTX get_btx(3,13)*/
  itoa(m_StepProof[m_ActStep*4+3],buf0,10); form+=buf0;
  form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+3]);
@@ -600,15 +604,15 @@ rf4: msk2 &= ~MaskDom.GetRowBv(glob); msk1 |= msk2;       /*  склеивание масок  
 /*---------------------------------------------------*/
 /*   Программа построения размеченного текста GET_TX */
 /*---------------------------------------------------*/
-void get_tx (int numb_txt,CString& Txt)
+void get_tx (int numb_txt,QString& Txt)
      /* Номер размеченного текста - поле для текста  */
      /*Ins_txt[] - Указатели на вставляемые фрагменты */
      /*text -  Размеченные тексты -kat[] - Каталог размеченных текстов */
-{ int i,j=0,end,n;
-  CString text;                       /* BTX */
-  text.LoadString(numb_txt);
+{ int i=0,end,n;
+  QString text;                       /* BTX */
+  text.append(numb_txt);
   
-  i=0; end=text.GetLength();
+  i=0; end=text.size();
   while (i<end) {
     if (text[i]=='~') 
       { i++; n=text[i]&15; Txt+=Ins_txt[n];}

@@ -29,7 +29,8 @@ HEADERS += \
     ScrDoc.h \
     BaseBool.h \
     CoverDoc.h \
-    Archive.h
+    Archive.h \
+    resouces.h
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib
