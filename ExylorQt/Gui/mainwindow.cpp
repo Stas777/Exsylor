@@ -19,7 +19,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionAbout_Exsylor_triggered()
 {
     AboutExylor *about = new AboutExylor(this);
-    about->show();
+    about->setModal(true);
+    about->exec();
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -30,7 +31,8 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::on_actionNew_triggered()
 {
     NewFile *newfile = new NewFile(this);
-    newfile->show();
+    newfile->setModal(true);
+    newfile->exec();
 }
 
 void MainWindow::on_actionOpen_triggered()
