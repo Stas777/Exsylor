@@ -45,63 +45,63 @@ void CScriptDoc::ForDefReg()
 { int i,j,s,s1,k;
   CkAttr* pAttr;
   QString W;
- m_sRegulWord.RemoveAll(); m_sRegulWordCount=0;
+ m_sRegulWord.clear(); m_sRegulWordCount=0;
  for (k=0; k<2; k++) {
   if (k)  {  W="FThen:"; }
   else       W="FIf:";
-  m_sRegulWord.Add (W);  m_sRegulWordCount++;
+  m_sRegulWord.append(W);  m_sRegulWordCount++;
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
     s1 =  pAttr->m_KifFlag.CountBit(); s =  pAttr->m_KthenFlag.CountBit();
     if (s==0 && s1==0) continue; // Next attribute
     if (((k==0) && (s1==0)) || ((k==1) && s1)) continue; // Next attribute
     W="Q   "; W+=pAttr->m_sTitle;
-    if (k==0 && m_sRegulWordCount>1)   W.SetAt(2,'&');
-    m_sRegulWord.Add (W);
-    W=" - "; m_sRegulWord.Add (W);  m_sRegulWordCount++;
+    if (k==0 && m_sRegulWordCount>1) W.replace(2, '&');
+    m_sRegulWord.append(W);
+    W=" - "; m_sRegulWord.append(W);  m_sRegulWordCount++;
     if (s1 && (k==0)) { // For  IF
       if (s1==1) {    // One value
-        W='V' + pAttr->m_ValNames.GetAt(pAttr->m_KifFlag.LeftOne()); m_sRegulWord.Add (W); 
+        W='V' + pAttr->m_ValNames.at(pAttr->m_KifFlag.LeftOne()); m_sRegulWord.append(W);
         continue;             // Next attribute   - ( OR )
       }
-      if (s1==pAttr->m_ValNames.GetSize()-1) {    // One NO value
-        W="NNot ";   m_sRegulWord.Add (W); 
+      if (s1==pAttr->m_ValNames.size()-1) {    // One NO value
+        W="NNot ";   m_sRegulWord.append(W);
         W='V';
-        for (j=0; j<pAttr->m_ValNames.GetSize(); j++)   // Circle for all values
-          if (pAttr->m_KifFlag.GetBitAt(j)==0) { W+=pAttr->m_ValNames.GetAt(j); break; }
-        m_sRegulWord.Add (W); // Next attribute   - ( OR )
+        for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
+          if (pAttr->m_KifFlag.GetBitAt(j)==0) { W+=pAttr->m_ValNames.at(j); break; }
+        m_sRegulWord.append(W); // Next attribute   - ( OR )
         continue;
       }
-      for (j=0; j<pAttr->m_ValNames.GetSize(); j++)   // Circle for all values
+      for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
         if (pAttr->m_KifFlag.GetBitAt(j)) {
-          W='V'; W+=pAttr->m_ValNames.GetAt(j); m_sRegulWord.Add (W);
-          W=" or"; m_sRegulWord.Add (W);
+          W='V'; W+=pAttr->m_ValNames.at(j); m_sRegulWord.append (W);
+          W=" or"; m_sRegulWord.append (W);
         }
-      m_sRegulWord.RemoveAt(m_sRegulWord.GetUpperBound());
+      m_sRegulWord.removeLast();
     }
     else {                           // For THEN
       if (s==1) {    // One value
-        W='V' + pAttr->m_ValNames.GetAt(pAttr->m_KthenFlag.LeftOne()); m_sRegulWord.Add (W); 
+        W='V' + pAttr->m_ValNames.at(pAttr->m_KthenFlag.LeftOne()); m_sRegulWord.append (W);
         continue;             // Next attribute   - ( OR )
       }
-      if (s==pAttr->m_ValNames.GetSize()-1) {    // One NO value
-        W="NNot ";   m_sRegulWord.Add (W);  
+      if (s==pAttr->m_ValNames.size()-1) {    // One NO value
+        W="NNot ";   m_sRegulWord.append (W);
         W='V';
-        for (j=0; j<pAttr->m_ValNames.GetSize(); j++)   // Circle for all values
-          if (pAttr->m_KthenFlag.GetBitAt(j)==0) { W+=pAttr->m_ValNames.GetAt(j); break; }
-        m_sRegulWord.Add (W); // Next attribute   - ( OR )
+        for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
+          if (pAttr->m_KthenFlag.GetBitAt(j)==0) { W+=pAttr->m_ValNames.at(j); break; }
+        m_sRegulWord.append (W); // Next attribute   - ( OR )
         continue;
       }
-      if (s==pAttr->m_ValNames.GetSize()) {   // Any
-        W="NAny "; m_sWord.Add (W); continue; // Next attribute   - ( OR )
+      if (s==pAttr->m_ValNames.size()) {   // Any
+        W="NAny "; m_sWord.append (W); continue; // Next attribute   - ( OR )
         continue;
       }
-      for (j=0; j<pAttr->m_ValNames.GetSize(); j++)   // Circle for all values
+      for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
         if (pAttr->m_KthenFlag.GetBitAt(j)) {
-          W='V'; W+=pAttr->m_ValNames.GetAt(j); m_sRegulWord.Add (W);
-          W=" or"; m_sRegulWord.Add (W);
+          W='V'; W+=pAttr->m_ValNames.at(j); m_sRegulWord.append (W);
+          W=" or"; m_sRegulWord.append (W);
         }
-      m_sRegulWord.RemoveAt(m_sRegulWord.GetUpperBound());
+      m_sRegulWord.removeLast();
     }
   }
  }
@@ -114,11 +114,11 @@ void CScriptDoc::FormOneReg(CSample* pReg)
   CkAttr* pAttr;
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
-    for (j=0; j<pAttr->m_ValNames.GetSize(); j++) {  // Circle for all values
+    for (j=0; j<pAttr->m_ValNames.size(); j++) {  // Circle for all values
       k =pAttr->m_KifFlag.GetBitAt(j);
       if (k) x = 2;  
       else { k =pAttr->m_KthenFlag.GetBitAt(j); if (k) x = 1; else x=0; }       
-      pReg->m_Values.Add(x);
+      pReg->m_Values.append(x);
     }
     pAttr->m_KifFlag.Zero(); pAttr->m_KthenFlag.Zero();
   }
@@ -127,7 +127,8 @@ void CScriptDoc::FormOneReg(CSample* pReg)
 //---------------------------------------------------------------------EndOneReg
 void CScriptDoc::EndOneReg()
 { ModeInput=FALSE; ForDefReg();
-  ChangeSelectionToRowNo(1,m_ActKRow); UpdateAllViews(NULL,NULL,&m_pAttrObj);
+  ChangeSelectionToRowNo(1,m_ActKRow);
+  //UpdateAllViews(NULL,NULL,&m_pAttrObj);
 }
 //---------------------------------------------------------------------AddOneReg
 void CScriptDoc::AddOneReg()
@@ -137,14 +138,14 @@ void CScriptDoc::AddOneReg()
 
 //---------------------------------------------------------------------WriteOneReg
 void CScriptDoc::WriteOneReg()
-{ CSample* pReg;  pReg = m_pReguls.GetAt(m_ActReg);  pReg->m_Values.RemoveAll();
+{ CSample* pReg;  pReg = m_pReguls.GetAt(m_ActReg);  pReg->m_Values.clear();
   FormOneReg(pReg);  EndOneReg();
 }
 
 //---------------------------------------------------------------------InsertOneReg
 void CScriptDoc::InsertOneReg()
 { CSample* pReg; pReg = new (CSample);
-  FormOneReg(pReg); m_pReguls.InsertAt(m_ActReg,pReg); EndOneReg();
+  FormOneReg(pReg); m_pReguls.m_sampleArr.insert(m_ActReg,pReg); EndOneReg();
 }
 
 //---------------------------------------------------------------------GetOneReg
@@ -157,7 +158,7 @@ void CScriptDoc::GetOneReg(int nR)
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
     pAttr->m_KifFlag.Zero(); pAttr->m_KthenFlag.Zero();
-    for (j=0; j<pAttr->m_ValNames.GetSize(); j++) {  // Circle for all values
+    for (j=0; j<pAttr->m_ValNames.size(); j++) {  // Circle for all values
       if (pReg->m_Values[iS]==2)      pAttr->m_KifFlag.SetBitAt(j,1); 
       else if (pReg->m_Values[iS]==1) pAttr->m_KthenFlag.SetBitAt(j,1);
       iS++;
@@ -168,12 +169,12 @@ void CScriptDoc::GetOneReg(int nR)
 
 //---------------------------------------------------------------------DelCurrentReg
 void CScriptDoc::DelCurrentReg()
-{ if (m_pReguls.GetSize() > 1) {
-    m_pReguls.RemoveAt(m_ActReg);
-    if (m_ActReg>=m_pReguls.GetSize()) m_ActReg--;
+{ if (m_pReguls.m_sampleArr.size() > 1) {
+    m_pReguls.m_sampleArr.remove(m_ActReg);
+    if (m_ActReg>=m_pReguls.m_sampleArr.size()) m_ActReg--;
     ReadCurrentReg();
   }
-  else AfxMessageBox(IDS_LAST_ROW_DEL);
+  //else AfxMessageBox(IDS_LAST_ROW_DEL);
 }
 
 //---------------------------------------------------------------------ClearReg
@@ -191,11 +192,15 @@ void CScriptDoc::ClearReg()
 //---------------------------------------------------------------------ReadCurrentReg
 void CScriptDoc::ReadCurrentReg()
 { GetOneReg(m_ActReg); ChangeSelectionToRowNo(1,m_ActKRow);
-  ChangeSelectionToRegNo(m_ActReg); UpdateAllViews(NULL,NULL,&m_pAttrObj); }
+  ChangeSelectionToRegNo(m_ActReg);
+  //UpdateAllViews(NULL,NULL,&m_pAttrObj);
+}
 
 //------------------------------------------------------------------NextPart
-void CScriptDoc::NextPart()
-{ if (ModeInput==FALSE) ModeInput = TRUE; else ModeInput=FALSE;
-  ForDefReg();  // For wordregview
-  ChangeSelectionToRowNo(1,m_ActKRow); UpdateAllViews(NULL,NULL,&m_pAttrObj);
+void CScriptDoc::NextPart(){
+    if (ModeInput==FALSE) ModeInput = TRUE;
+    else ModeInput=FALSE;
+    ForDefReg();  // For wordregview
+    ChangeSelectionToRowNo(1,m_ActKRow);
+    //UpdateAllViews(NULL,NULL,&m_pAttrObj);
 }
