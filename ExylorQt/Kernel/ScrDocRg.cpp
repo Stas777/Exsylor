@@ -1,22 +1,8 @@
 // scrdoc.cpp : implementation of the CExsDoc class
 // 17.05.2007 -------------------------------------
 
-#include "stdafx.h"
-#include <io.h>
 #include <ctype.h>
-#include <sys\types.h>
-#include <sys\stat.h>
-#include "Exsylor.h"
-#include "scrdoc.h"
-#include "moddlg.h"
-#include "scriptvw.h"
-#include "brview.h"
-#include "trbzview.h"
-#include "treeview.h"
-#include "bmview.h"
-#include "modview.h"
-#include "wordview.h"
-#include "mainfrm.h"
+#include "ScrDoc.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -25,12 +11,12 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 extern int nDoms;
 extern CBM MaskDom;
-extern CWordArray* DomVal;   //значность доменов
-extern CWordArray* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
+extern QVector<int>* DomVal;   //значность доменов
+extern QVector<int>* DomAdr;   //адреса доменов в строке (nDom+1 элементов)
 
-extern CStringArray Ins_txt;
+extern QVector<QString> Ins_txt;
 
-void get_tx (int numb_txt,CString& Txt);
+void get_tx (int numb_txt, QString& Txt);
 
 /////////////////////////////////////////////////////////////////////////////
 // scrdocrg.cpp : implementation of the CScriptDoc class for SAMPLE service
@@ -58,7 +44,7 @@ void get_tx (int numb_txt,CString& Txt);
 void CScriptDoc::ForDefReg()
 { int i,j,s,s1,k;
   CkAttr* pAttr;
-  CString W;
+  QString W;
  m_sRegulWord.RemoveAll(); m_sRegulWordCount=0;
  for (k=0; k<2; k++) {
   if (k)  {  W="FThen:"; }

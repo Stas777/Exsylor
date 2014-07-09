@@ -63,13 +63,13 @@ void CScriptDoc::ForDefSmp()
     W='Q'; W+=pAttr->m_sTitle;  m_sWord.append (W);
     W=" - "; m_sWord.append (W);  m_sWordCount++;
     if (s==1) {    // One value
-      W='V' + pAttr->m_ValNames.GetAt(pAttr->m_DFlag.LeftOne()); m_sWord.append (W);
+      W='V' + pAttr->m_ValNames.at(pAttr->m_DFlag.LeftOne()); m_sWord.append (W);
       continue;    // Next attribute   - ( OR )
     }
     if (s==pAttr->m_ValNames.size()-1) {    // One NO value
       W="NNot ";   m_sWord.append (W);  W='V';
       for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
-        if (!pAttr->m_DFlag.GetBitAt(j)) { W+=pAttr->m_ValNames.GetAt(j); break; }
+        if (!pAttr->m_DFlag.GetBitAt(j)) { W+=pAttr->m_ValNames.at(j); break; }
       m_sWord.append(W); // Next attribute   - ( OR )
       continue;
     }
@@ -79,7 +79,7 @@ void CScriptDoc::ForDefSmp()
     }
     for (j=0; j<pAttr->m_ValNames.size(); j++)   // Circle for all values
       if (pAttr->m_DFlag.GetBitAt(j)) {
-        W='V'; W+=pAttr->m_ValNames.GetAt(j); m_sWord.append (W);
+        W='V'; W+=pAttr->m_ValNames.at(j); m_sWord.append (W);
         W=" or "; m_sWord.append(W);
       }
     m_sWord.removeLast();
@@ -92,7 +92,7 @@ void CScriptDoc::FormOneSmp(CSample* pSmp)
   CkAttr* pAttr;
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
-    for (j=0; j<pAttr->m_ValNames.GetSize(); j++) {  // Circle for all values
+    for (j=0; j<pAttr->m_ValNames.size(); j++) {  // Circle for all values
       pSmp->m_Values.append(pAttr->m_DFlag.GetBitAt(j));
     }
     pAttr->m_DFlag.Zero();
@@ -100,8 +100,11 @@ void CScriptDoc::FormOneSmp(CSample* pSmp)
 }
 
 //---------------------------------------------------------------------EndOneSmp
-void CScriptDoc::EndOneSmp()
-{ ForDefSmp(); ChangeSelectionToRowNo(1,m_ActDRow); UpdateAllViews(NULL,NULL,&m_pAttrObj); }
+void CScriptDoc::EndOneSmp() {
+    ForDefSmp();
+    ChangeSelectionToRowNo(1,m_ActDRow);
+    //UpdateAllViews(NULL,NULL,&m_pAttrObj);
+}
 
 //---------------------------------------------------------------------AddOneSmp
 void CScriptDoc::AddOneSmp()
@@ -110,15 +113,15 @@ void CScriptDoc::AddOneSmp()
 }
 
 //---------------------------------------------------------------------WriteOneSmp
-void CScriptDoc::WriteOneSmp()
-{ CSample* pSmp; pSmp = m_pSamples.GetAt(m_ActSmp); pSmp->m_Values.RemoveAll();
-  FormOneSmp(pSmp); EndOneSmp();
+void CScriptDoc::WriteOneSmp() {
+    CSample* pSmp; pSmp = m_pSamples.GetAt(m_ActSmp); pSmp->m_Values.clear();
+    FormOneSmp(pSmp); EndOneSmp();
 }
 
 //---------------------------------------------------------------------InsertOneSmp
-void CScriptDoc::InsertOneSmp()
-{ CSample* pSmp;  pSmp = new (CSample);
-  FormOneSmp(pSmp);  m_pSamples.InsertAt(m_ActSmp,pSmp); EndOneSmp();
+void CScriptDoc::InsertOneSmp() {
+    CSample* pSmp;  pSmp = new (CSample);
+    FormOneSmp(pSmp);  m_pSamples.m_sampleArr.insert(m_ActSmp,pSmp); EndOneSmp();
 }
 
 //---------------------------------------------------------------------GetOneSmp
@@ -130,7 +133,7 @@ void CScriptDoc::GetOneSmp(int nR)
 
   for (i=0; i<m_pAttrObj.GetSize(); i++) {  // Circle for all attributes
     pAttr = m_pAttrObj.GetAt(i);
-    for (j=0; j<pAttr->m_ValNames.GetSize(); j++) {  // Circle for all values
+    for (j=0; j<pAttr->m_ValNames.size(); j++) {  // Circle for all values
       pAttr->m_DFlag.SetBitAt(j,pSmp->m_Values[iS++]);
     }
   }
@@ -139,12 +142,12 @@ void CScriptDoc::GetOneSmp(int nR)
 
 //---------------------------------------------------------------------DelCurrentSmp
 void CScriptDoc::DelCurrentSmp()
-{ if (m_pSamples.GetSize() > 1) {
-    m_pSamples.RemoveAt(m_ActSmp);
-    if (m_ActSmp>=m_pSamples.GetSize()) m_ActSmp--;
+{ if (m_pSamples.m_sampleArr.size() > 1) {
+    m_pSamples.m_sampleArr.remove(m_ActSmp);
+    if (m_ActSmp>=m_pSamples.m_sampleArr.size()) m_ActSmp--;
     ReadCurrentSmp();
   }
-  else AfxMessageBox(IDS_LAST_ROW_DEL);
+  //else AfxMessageBox(IDS_LAST_ROW_DEL);
 }
 //---------------------------------------------------------------------ClearSmp
 void CScriptDoc::ClearSmp()
@@ -157,7 +160,9 @@ void CScriptDoc::ClearSmp()
 }
 
 //---------------------------------------------------------------------ReadCurrentSmp
-void CScriptDoc::ReadCurrentSmp()
-{ GetOneSmp(m_ActSmp); ChangeSelectionToRowNo(1,m_ActDRow);
-  ChangeSelectionToSmpNo(m_ActSmp); UpdateAllViews(NULL,NULL,&m_pAttrObj); }
+void CScriptDoc::ReadCurrentSmp() {
+    GetOneSmp(m_ActSmp); ChangeSelectionToRowNo(1,m_ActDRow);
+    ChangeSelectionToSmpNo(m_ActSmp);
+    //UpdateAllViews(NULL,NULL,&m_pAttrObj);
+}
 
