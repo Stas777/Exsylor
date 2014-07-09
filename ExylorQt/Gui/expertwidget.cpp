@@ -1,7 +1,7 @@
 #include "expertwidget.h"
 #include "ui_expertwidget.h"
 #include "datadialog.h"
-#include "knowledgedialog.h"
+#include "knowledgedialogue.h"
 
 ExpertWidget::ExpertWidget(QWidget *parent) :
     QWidget(parent),
