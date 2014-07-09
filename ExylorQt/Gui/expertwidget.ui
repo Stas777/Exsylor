@@ -17,7 +17,7 @@
    <item row="1" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>GroupBox</string>
+      <string>Models</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="4" column="0" colspan="2">
@@ -38,7 +38,7 @@
        <widget class="QComboBox" name="comboBox"/>
       </item>
       <item row="2" column="0" colspan="2">
-       <widget class="QPushButton" name="dataPushButton">
+       <widget class="QPushButton" name="dataButton">
         <property name="text">
          <string>Data</string>
         </property>

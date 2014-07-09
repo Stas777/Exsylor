@@ -18,6 +18,8 @@ public:
 private slots:
     void on_dataButton_clicked();
 
+    void on_KnowledgePushButton_clicked();
+
 private:
     Ui::ExpertWidget *ui;
 };
