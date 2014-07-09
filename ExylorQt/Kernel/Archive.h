@@ -7,7 +7,7 @@
 
 using namespace std;
 typedef unsigned UINT;
-typedef unsigned char BYTE;
+typedef char BYTE;
 typedef unsigned short WORD;
 typedef long LONG;
 typedef unsigned long DWORD;
@@ -51,7 +51,6 @@ public:
   CArch& operator<<(int i);
   CArch& operator<<(unsigned int u);
   CArch& operator<<(short w);
-  CArch& operator<<(char ch);
   CArch& operator<<(QString qstr);
 #ifdef _BIT64
   CArch& operator<<(LONGLONG dwdw);
@@ -69,7 +68,6 @@ public:
   CArch& operator>>(int& i);
   CArch& operator>>(unsigned int& u);
   CArch& operator>>(short& w);
-  CArch& operator>>(char& ch);
   CArch& operator>>(QString& qstr);
 #ifdef _BIT64
   CArch& operator>>(LONGLONG& dwdw);

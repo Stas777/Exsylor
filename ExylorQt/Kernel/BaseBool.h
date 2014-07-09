@@ -42,7 +42,7 @@ using namespace std;
 
 #ifdef _LINUX
 #undef _DEBUG
-typedef unsigned char BYTE; 
+typedef char BYTE;
 typedef unsigned long ULONG; 
 typedef bool BOOL;
 
@@ -165,7 +165,6 @@ public:
 //*********************** Operators and functions of assignment *************************
   const CBV& operator=(const CBV& bvSrc);
   const CBV& operator=(const BYTE* pbt);
-  const CBV& operator=(const char* pch);
   void Zero();
   void One();
 
@@ -594,8 +593,6 @@ inline const CBV& CBV::operator =(const CBV& bvSrc)              //operator =
   return *this;
 }
 
-inline const CBV& CBV::operator =(const char* pch)               // operator =
-{ AssignChar(SafeStrlen(pch), pch); return *this; }
 
 inline const CBV& CBV::operator =(const BYTE* pbt)                //operator =
 { ASSERT(m_nBitLength>0);

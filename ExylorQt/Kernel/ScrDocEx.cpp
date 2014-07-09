@@ -63,7 +63,7 @@ QString CScriptDoc::Beg_z(int n,int atr,int val, CBV& con)
   int k;                 // Get the data for the specific node.
   WORD w;
   char kst[5]; //,alf[5],set[400],buf5[400],pole[400],pole1[5];
-  QString set,alf,buf5;
+  QString set, alf, buf5;
   QString buf;
   CkAttr* pAttr;  
   QString W,W1;
@@ -435,7 +435,7 @@ void CScriptDoc::PutMatrixProof()
  snprintf(buf, 10, "%d", m_ActStep*4+3);
  form+=buf; form+=")\n";
  //itoa(m_StepProof[m_ActStep*4],buf,10); 
- snprintf(buf,"%d",m_StepProof[m_ActStep*4]);
+ snprintf(buf, 10, "%d",m_StepProof[m_ActStep*4]);
  form+=" ("; form+=buf; form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4]);
  Wbv&=m_Answer;
@@ -443,7 +443,7 @@ void CScriptDoc::PutMatrixProof()
  
  form+=",\n ("; 
  //itoa(m_StepProof[m_ActStep*4+1],buf,10); 
- snprintf(buf,"%d",m_StepProof[m_ActStep*4+1]);
+ snprintf(buf, 10, "%d",m_StepProof[m_ActStep*4+1]);
  
  form+=buf; form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+1]);
@@ -452,14 +452,14 @@ void CScriptDoc::PutMatrixProof()
  
  form+=",\n ==============================================================================\n ("; /* BTX get_btx(3,5)*/
  //itoa(m_StepProof[m_ActStep*4+3],buf,10); 
- snprintf(buf,"%03u",m_StepProof[m_ActStep*4+3]);
+ snprintf(buf, 10, "%d",m_StepProof[m_ActStep*4+3]);
  form+=buf; form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+3]);
  Wbv&=m_Answer;
  get_vct(form,Wbv,m_StepProof[m_ActStep*4+2]);
  
  StringToArray(m_sExplanStep,form);
- UpdateAllViews(NULL,NULL,NULL);
+ //UpdateAllViews(NULL,NULL,NULL);
 }
 
 /********************************************************/
@@ -469,7 +469,8 @@ void CScriptDoc::get_vct(QString& form,CBV& vct0,int pr)
     CBV bv;
     bv=vct0.Extract(m_DomAdr[k],m_DomVal[k]);
     if (pr==k) form +="^";
-    form += bv.BitChar('1','0')+" ";
+    form.append(bv.BitChar('1','0'));
+    form.append(" ");
     if (k==pr) form +="^";
   }  
   return;
@@ -592,12 +593,12 @@ rf4: msk2 &= ~MaskDom.GetRowBv(glob); msk1 |= msk2;       /*  склеивание масок  
  form=form.left(form.size()-4); //????? form[strlen(form)-5]='\0';
  buf.clear();
  buf.append(IDS_L_PROOF_ADD2); form+=buf;       /* BTX get_btx(3,13)*/
- itoa(m_StepProof[m_ActStep*4+3],buf0,10); form+=buf0;
+ snprintf(buf0, 10, "%d", m_StepProof[m_ActStep*4+3]); form+=buf0;
  form+="): ";
  Wbv = m_MatrAndObj.GetRowBv(m_StepProof[m_ActStep*4+3]);
  if_diz(Wbv,form);   form+="."; 
  StringToArray(m_sExplanStep,form); SplitRows();
- UpdateAllViews(NULL,NULL,NULL);
+ //UpdateAllViews(NULL,NULL,NULL);
  return;
 }
 
@@ -610,12 +611,13 @@ void get_tx (int numb_txt,QString& Txt)
      /*text -  Размеченные тексты -kat[] - Каталог размеченных текстов */
 { int i=0,end,n;
   QString text;                       /* BTX */
+  text.clear();
   text.append(numb_txt);
   
   i=0; end=text.size();
   while (i<end) {
     if (text[i]=='~') 
-      { i++; n=text[i]&15; Txt+=Ins_txt[n];}
+      { i++; n=text[i].toLatin1() & 15; Txt+=Ins_txt[n];}
    else Txt += text[i];
    i++;
  }
