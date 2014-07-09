@@ -11,16 +11,16 @@
 #define IDR_REG_EDIT                    5
 #define IDR_SCRIPTTYPE                  6
 #define IDR_SCROPTTYPE                  7
-#define IDS_NOT_SAVE_SMP                7
+#define IDS_NOT_SAVE_SMP                "Save changes in sample block?"
 #define IDR_EMPTY                       8
 #define IDR_VIEW_BM                     8
 #define IDR_EXPLAN                      9
 #define IDR_WORD_EDIT                   10
 #define IDR_WORD_SCRIPT                 11
-#define IDS_EXIST_SMP                   12
+#define IDS_EXIST_SMP                   "Sample block with this name exists! Overwriting its?"
 #define IDR_SYSTEM                      12
-#define IDS_ERROR_FILE                  13
-#define IDS_ERROR_FILE2                 14
+#define IDS_ERROR_FILE                  "Unable to open a new file "
+#define IDS_ERROR_FILE2                 "Unable to read file "
 #define IDD_ABOUTBOX                    51
 #define IDD_MODELSCRIPT                 52
 #define IDD_FORMA                       53
@@ -51,65 +51,65 @@
 #define IDI_EMPT                        117
 #define IDI_WORD_SCRIPT                 118
 #define IDI_WORD_ED                     119
-#define IDS_ERR_ATR                     130
-#define IDS_ERR_VAL                     131
-#define IDS_IMPOSSIBLE                  132
-#define IDS_MODE_IF                     133
-#define IDS_MODE_THEN                   134
-#define IDS_REG_SEL                     135
-#define IDS_REALLY                      136
-#define IDS_SYSTEM                      137
-#define IDS_CR_DATA                     138
-#define IDS_ED_DATA                     139
-#define IDS_CR_KNOW                     140
-#define IDS_ED_KNOW                     141
-#define IDS_DESC_OBJ                    142
-#define IDS_CH_AIM                      143
-#define IDS_BMVIEW                      144
-#define IDS_REDUCT_NOT                  145
-#define IDS_L_CONTRADICT                146
-#define IDS_L_CONTRA_REGUL              147
-#define IDS_L_INFER_EVIDENT             148
-#define IDS_L_INFER_TOO_LONG            149
-#define IDS_L_VALID_SET                 150
-#define IDS_L_NOT_VAL                   151
-#define IDS_EXPLANVIEW                  152
-#define IDS_L_NOT_VAL_1                 153
-#define IDS_L_NOT_VAL_2                 154
-#define IDS_DELETE_REG                  155
-#define IDS_L_STATEM_3                  156
-#define IDS_L_PRESENT_CONTRA            157
-#define IDS_L_STATEM_4                  158
-#define IDS_REC_DONE                    159
-#define IDS_L_ADD_EXP                   160
-#define IDS_L_CONTRADICT2               161
-#define IDS_TASK_DESC                   162
-#define IDS_ANY_VAL                     163
-#define IDS_L_STATEM_5                  164
-#define IDS_L_STATEM_6                  165
-#define IDS_L_PROOF_ADD                 166
-#define IDS_L_PROOF_ADD0                167
-#define IDS_L_PROOF_ADD1                168
-#define IDS_L_PROOF_ADD2                169
-#define IDS_L_PROOF_ADD3                170
-#define IDS_SYSMODE                     171
-#define IDS_NOT_REGUL_FOR_IND           172
-#define IDS_L_LEN_PROOF                 173
-#define IDS_L_0_PROOF_VAL               174
+#define IDS_ERR_ATR                     "Number of attributes <2 - ERROR!"
+#define IDS_ERR_VAL                     "Number of values of <%s>  <2 - ERROR!"
+#define IDS_IMPOSSIBLE                  "Now it is impossible!"
+#define IDS_MODE_IF                     " - (If)"
+#define IDS_MODE_THEN                   " - (Then)"
+#define IDS_REG_SEL                     "Current block of regularities: "
+#define IDS_REALLY                      "Do you really want to finish work without preservation of results?"
+#define IDS_SYSTEM                      "Setup mode"
+#define IDS_CR_DATA                     "Creation of the data block"
+#define IDS_ED_DATA                     "Edition of the data block"
+#define IDS_CR_KNOW                     "Creation of the knowledge block"
+#define IDS_ED_KNOW                     "Edition of the knowledge block"
+#define IDS_DESC_OBJ                    "Description of the object for the recognition"
+#define IDS_CH_AIM                      "Choice of aim for recognition"
+#define IDS_BMVIEW                      "Result viewing"
+#define IDS_REDUCT_NOT                  "Reduction is impossible!"
+#define IDS_L_CONTRADICT                "*** The object contradicts the knowledge base"
+#define IDS_L_CONTRA_REGUL              "Contradicting regularity"
+#define IDS_L_INFER_EVIDENT             "The inference is evident"
+#define IDS_L_INFER_TOO_LONG            "Sorry, the proof cannot be shown because it is too long (more than 100 steps!)"
+#define IDS_L_VALID_SET                 "The value ^~0^ of attribute ^~1^ is possible because the set\n  ~2\nis valid"
+#define IDS_L_NOT_VAL                   "The value ^~0^ of attribute ^~1^ is impossible, that can be proved of contraries.\nAssume that  ^~1 - ~0^.\n"
+#define IDS_EXPLANVIEW                  "Explanations of recognition results"
+#define IDS_L_NOT_VAL_1                 "In view of that and of the known values of other attributes of the object\nwe simplify the regularities  (holding  their numbers) and build a chain of  conclusions\nthat  leads  to contradiction whence follows that the assumption is false.\n"
+#define IDS_L_NOT_VAL_2                 "That means that  ^~1 = not ~0^.\n"
+#define IDS_DELETE_REG                  "Delete the block of regularities  %s ?"
+#define IDS_L_STATEM_3                  "contradict each other. Hence the assumption is false and\nthe attribute ^~1^ cannot have the value ^~0^."
+#define IDS_L_PRESENT_CONTRA            " When analyzing the object You have defined and the regularities of the used knowledge block ^~3^ contradiction~4 found.  Present the regularities contradicting the object?\n"
+#define IDS_L_STATEM_4                  "    contradict each other. Hence the assumption is false and such object is impossible."
+#define IDS_REC_DONE                    "***  Recognition is done"
+#define IDS_L_ADD_EXP                   "additional explanations"
+#define IDS_L_CONTRADICT2               "*** The object contradicts the knowledgebase directly"
+#define IDS_TASK_DESC                   "Task: the description of object and the choice of aim"
+#define IDS_ANY_VAL                     "Any values"
+#define IDS_L_STATEM_5                  "contradict each other. Hence the assumption is false and\nthe new regularity is a consequence of the available ones.\n"
+#define IDS_L_STATEM_6                  "contradict each other. Hence the assumption is false and\nthe new regularity contradicts the available ones.\n"
+#define IDS_L_PROOF_ADD                 "We put the assumed statements into the form:\n("
+#define IDS_L_PROOF_ADD0                ".\nThat means,\n"
+#define IDS_L_PROOF_ADD1                ".\nAnd since\n"
+#define IDS_L_PROOF_ADD2                ",\nwhence follows that\n ("
+#define IDS_L_PROOF_ADD3                "The inference is evident."
+#define IDS_SYSMODE                     "System mode"
+#define IDS_NOT_REGUL_FOR_IND           "Knowledge block after induction is empty!"
+#define IDS_L_LEN_PROOF                 "     Length of the proof - ^~3^ step~4."
+#define IDS_L_0_PROOF_VAL               "The value ^~0^ of attribute ^~1^ is impossible,\nthat follows from the information on the object\n"
 #define IDD_BLOCK_SEL                   174
-#define IDS_L_0_PROOF_VAL2              175
-#define IDS_L_PROOF_CONTRA              176
-#define IDS_L_PROOF_CONTRA_1            177
-#define IDS_L_0_PROOF_ATR               178
-#define IDS_L_PROOF_ATR0                179
-#define IDS_L_STATEM                    180
-#define IDS_LAST_ROW_DEL                181
-#define IDS_DELETE_MOD                  182
-#define IDS_SMP_SEL                     183
-#define IDS_DELETE_SMP                  184
-#define IDS_MOD_SEL                     185
-#define IDS_NOT_SAVE_REG                186
-#define IDS_EXIST_REG                   187
+#define IDS_L_0_PROOF_VAL2              "~4\nand regularity number ^~3^:\n ~2."
+#define IDS_L_PROOF_CONTRA              "     Such object is impossible that can be proved of contraries. Assume that\n~2.\n"
+#define IDS_L_PROOF_CONTRA_1            "     We correspondingly simplify the regularities (holding their numbers) and\n build a chain of  conclusions  that  leads  to contradiction\n whence follows that the assumption is false.\n"
+#define IDS_L_0_PROOF_ATR               "The value~4 ^~5^ of attribute ^~1^ ~6 impossible,\n that follows from the information on the object\n~7\nand regularity ^~3^:\n ~2."
+#define IDS_L_PROOF_ATR0                "The value~4 ^~5^ of attribute ^~1^ ~6 impossible,\n that can be proved of contraries. Assume that\n ^~1^ - ~2.\n"
+#define IDS_L_STATEM                    "     Statements\n(~5) ~6  and\n(~3) ~2\n"
+#define IDS_LAST_ROW_DEL                "The last line to delete it is impossible!"
+#define IDS_DELETE_MOD                  "Delete model %s ?\r\n (All blocks with regularities and samples for this model will be also removed!)"
+#define IDS_SMP_SEL                     "Current block of samples: "
+#define IDS_DELETE_SMP                  "Delete the block of samples  %s ?"
+#define IDS_MOD_SEL                     "Current model: "
+#define IDS_NOT_SAVE_REG                "Save changes in the knowledge block?"
+#define IDS_EXIST_REG                   "Knowledge block with this name exists! Overwriting it?"
 #define IDC_COMBO1                      1000
 #define IDC_COMBO2                      1001
 #define ID_EDIT                         1002
