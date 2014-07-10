@@ -72,7 +72,7 @@ CBM GenKnow(int exp, int nRowK, int Rang, int ver)
     Row = CrRandVect(ver);     // ѕостроение вектора с плотностью ver распределени€ 1
     if (!CreateReg(Rang,Row,Reg)) continue;            // ѕостроение з-сти ранга Rang
     for(i=0; i<nRow; i++)  {
-      if (MatrK[i] <= Reg) goto next;            // ѕроверка на поглощение  
+      if (MatrK[i] <= (BYTE*)Reg) goto next;            // ѕроверка на поглощение
     }
     MatrK.Add(Reg); nRow++;
 next: n++; 
@@ -102,7 +102,7 @@ BOOL CreateReg(int Rang,CBV& Row,CBV& Reg)  //FALSE - з-сть не построена
   for (i=0; i<Rang; i++) {
     j=rand()%nDoms;    // номер выбранного домена
     Work = MaskDom.GetRowBv(j) & Row;
-    if(Work == MaskDom[j]) return FALSE;
+    if((BYTE*)Work == MaskDom[j]) return FALSE;
     if((Reg | Work) == Reg)  return FALSE;
     Reg |= Work;
   }
