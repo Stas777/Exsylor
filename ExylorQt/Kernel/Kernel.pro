@@ -10,9 +10,24 @@ TARGET = Kernel
 TEMPLATE = lib
 CONFIG += staticlib
 
-SOURCES += kernel.cpp
+SOURCES += \
+    ScrObj.cpp \
+    ScrDocSM.cpp \
+    ScrDocRg.cpp \
+    ScrDocExpImp.cpp \
+    Proof.cpp \
+    Induct.cpp \
+    Gener.cpp \
+    Bv.cpp \
+    Bm.cpp \
+    Archive.cpp
 
-HEADERS += kernel.h
+HEADERS += \
+    ScrDoc.h \
+    BaseBool.h \
+    CoverDoc.h \
+    Archive.h \
+    resouces.h
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib
