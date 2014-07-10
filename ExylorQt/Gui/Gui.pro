@@ -13,8 +13,24 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    aboutexylor.cpp \
+    datadialog.cpp \
+    expertwidget.cpp \
+    newfile.cpp \
+    knowledgedialogue.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    aboutexylor.h \
+    mainwindow.h \
+    datadialog.h \
+    expertwidget.h \
+    newfile.h \
+    knowledgedialogue.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutexylor.ui \
+    datadialog.ui \
+    expertwidget.ui \
+    newfile.ui \
+    knowledgedialogue.ui
