@@ -1,5 +1,1 @@
-#include "model.h"
-
-Model::Model()
-{
-}
+#include "Model.h"
