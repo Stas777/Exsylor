@@ -2,18 +2,35 @@
 #include "Archive.h"
 
 void Model::load(CArch& loader) {
-    loader >> activeDataBlock;
-    loader >> activeKnowsBlock;
-    attributes.Serialize(loader);
-    knowsMap.Serialize(archive);
-    dataMap.Serialize(archive);
+    loader >> modelName;
+    dataTemplate.load(loader);
+
+    foreach(QString k, dataMap.keys())
+    {
+      loader >> k;
+      dataMap.value(k)->load(loader);
+    }
+
+    foreach(QString k, knowsMap.keys())
+    {
+        loader >> k;
+        knowsMap.value(k)->load(loader);
+    }
 }
 
 void Model::save(CArch& saver) {
     saver << modelName;
     dataTemplate.save(saver);
 
-    attributes.Serialize(saver);
-    knowsMap.Serialize(archive);
-    dataMap.Serialize(archive);
+    foreach(QString k, dataMap.keys())
+    {
+        saver << k;
+        dataMap.value(k)->save(saver);
+    }
+
+    foreach(QString k, knowsMap.keys())
+    {
+        saver << k;
+        knowsMap.value(k)->save(saver);
+    }
 }

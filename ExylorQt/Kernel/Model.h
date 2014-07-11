@@ -23,8 +23,8 @@ private:
 
     DataTemplate dataTemplate;
 
-    QMap<QString, Data*> knowsMap;
-    QMap<QString, Knowledge*> dataMap;
+    QMap<QString, Data*> dataMap;
+    QMap<QString, Knowledge*> knowsMap;
 
     QString activeKnowsBlock;
     QString activeDataBlock;

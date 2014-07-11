@@ -13,7 +13,7 @@ public:
 private:
     int attrCount;
     QVector<CkAttr> attributesVector;
-    QVector<int> domainLenghtVector;
+    QVector<int> domainLenghtsVector;
     QVector<int> domainAddressVector;
 };
 
