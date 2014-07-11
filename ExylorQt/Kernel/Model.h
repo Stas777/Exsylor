@@ -7,8 +7,8 @@
 class Model
 {
 public:
-    void load(QString fileName);
-    void save(QString fileName);
+    void load(char* fileName);
+    void save(char* fileName);
 
 private:
     QString modelName;
@@ -16,7 +16,7 @@ private:
     CkAttrArray attributes;
 
     QVector<int> domainValues;
-    QVector<int> domAddress;
+    QVector<int> domainAddress;
 
     CBlockMap knowsMap;
     CBlockMap dataMap;
