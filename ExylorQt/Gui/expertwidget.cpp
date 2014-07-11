@@ -1,6 +1,6 @@
 #include "expertwidget.h"
 #include "ui_expertwidget.h"
-#include "datadialog.h"
+#include "datadialogue.h"
 #include "knowledgedialogue.h"
 #include "newfile.h"
 
@@ -18,9 +18,9 @@ ExpertWidget::~ExpertWidget()
 
 void ExpertWidget::on_dataButton_clicked()
 {
-    DataDialog dataDialog;
-    dataDialog.setModal(true);
-    dataDialog.exec();
+    DataDialogue dataDialogue;
+    dataDialogue.setModal(true);
+    dataDialogue.exec();
 }
 
 void ExpertWidget::on_KnowledgePushButton_clicked()

@@ -15,22 +15,28 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     aboutexylor.cpp \
-    datadialog.cpp \
     expertwidget.cpp \
     newfile.cpp \
-    knowledgedialogue.cpp
+    knowledgedialogue.cpp \
+    datadialogue.cpp \
+    iftab.cpp \
+    elsetab.cpp
 
 HEADERS  += \
     aboutexylor.h \
     mainwindow.h \
-    datadialog.h \
     expertwidget.h \
     newfile.h \
-    knowledgedialogue.h
+    knowledgedialogue.h \
+    datadialogue.h \
+    iftab.h \
+    elsetab.h
 
 FORMS    += mainwindow.ui \
     aboutexylor.ui \
-    datadialog.ui \
     expertwidget.ui \
     newfile.ui \
-    knowledgedialogue.ui
+    knowledgedialogue.ui \
+    datadialogue.ui \
+    iftab.ui \
+    elsetab.ui
