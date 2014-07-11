@@ -20,14 +20,20 @@ SOURCES += \
     Gener.cpp \
     Bv.cpp \
     Bm.cpp \
-    Archive.cpp
+    Archive.cpp \
+    Model.cpp \
+    data.cpp \
+    knowledge.cpp
 
 HEADERS += \
     ScrDoc.h \
     BaseBool.h \
     CoverDoc.h \
     Archive.h \
-    resouces.h
+    resouces.h \
+    Model.h \
+    data.h \
+    knowledge.h
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib
