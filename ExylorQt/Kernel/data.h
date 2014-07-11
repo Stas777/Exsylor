@@ -2,15 +2,19 @@
 #define DATA_H
 
 #include "Model.h"
+#include "ScrDoc.h"
+#include "QVector"
 
 class Data
 {
 public:
     Data(Model* model);
-    load();
-    save;
+    void load(CArch& loader);
+    void save(CArch& saver);
 private:
     Model* model;
+
+
 
 };
 

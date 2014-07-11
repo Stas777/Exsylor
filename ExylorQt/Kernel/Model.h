@@ -3,23 +3,28 @@
 #include "ScrDoc.h"
 
 #include <QString>
+#include <QMap>
+#include "data.h"
+#include "knowledge.h"
+#include "datatemplate.h"
+#include "modelmanager.h"
+#include "Archive.h"
 
-class Model
-{
+class Model {
+
+friend class ModelManager;
+
 public:
-    void load(char* fileName);
-    void save(char* fileName);
+    void load(CArch& loader);
+    void save(CArch& saver);
 
 private:
     QString modelName;
 
-    CkAttrArray attributes;
+    DataTemplate dataTemplate;
 
-    QVector<int> domainValues;
-    QVector<int> domainAddress;
-
-    CBlockMap knowsMap;
-    CBlockMap dataMap;
+    QMap<QString, Data*> knowsMap;
+    QMap<QString, Knowledge*> dataMap;
 
     QString activeKnowsBlock;
     QString activeDataBlock;

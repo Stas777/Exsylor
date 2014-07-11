@@ -7,6 +7,8 @@ class Knowledge
 {
 public:
     Knowledge();
+    void load(CArch& loader);
+    void save(CArch& saver);
 private:
     Model* model;
 
