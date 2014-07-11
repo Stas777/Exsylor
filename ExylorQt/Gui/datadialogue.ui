@@ -36,9 +36,6 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0" colspan="2">
-      <widget class="QTableView" name="tableView"/>
-     </item>
      <item row="1" column="0" colspan="2">
       <widget class="QTextEdit" name="textEdit"/>
      </item>
@@ -94,6 +91,9 @@
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="0" column="0" colspan="2">
+      <widget class="QTableWidget" name="tableWidget"/>
      </item>
     </layout>
    </item>

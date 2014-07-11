@@ -24,9 +24,9 @@
        <string>If</string>
       </attribute>
      </widget>
-     <widget class="ElseTab" name="elsetab">
+     <widget class="ThenTab" name="thentab">
       <attribute name="title">
-       <string>Else</string>
+       <string>Then</string>
       </attribute>
      </widget>
     </widget>
@@ -41,9 +41,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>ElseTab</class>
+   <class>ThenTab</class>
    <extends>QWidget</extends>
-   <header location="global">elsetab.h</header>
+   <header location="global">thentab.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

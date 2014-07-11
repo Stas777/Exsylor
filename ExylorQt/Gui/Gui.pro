@@ -20,7 +20,7 @@ SOURCES += main.cpp\
     knowledgedialogue.cpp \
     datadialogue.cpp \
     iftab.cpp \
-    elsetab.cpp
+    thentab.cpp
 
 HEADERS  += \
     aboutexylor.h \
@@ -30,7 +30,7 @@ HEADERS  += \
     knowledgedialogue.h \
     datadialogue.h \
     iftab.h \
-    elsetab.h
+    thentab.h
 
 FORMS    += mainwindow.ui \
     aboutexylor.ui \
@@ -39,4 +39,4 @@ FORMS    += mainwindow.ui \
     knowledgedialogue.ui \
     datadialogue.ui \
     iftab.ui \
-    elsetab.ui
+    thentab.ui
