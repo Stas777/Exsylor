@@ -9,6 +9,8 @@
 class Attr {
 public:
     Attr();
+    Attr(QString title);
+    void addValue(QString valueName);
     virtual void load(CArch& loader); // look up ad ScrObj CkAttr:Serialize
     virtual void save(CArch& saver);
 // Attributes

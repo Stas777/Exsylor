@@ -17,6 +17,8 @@ public:
 private:
     DataTemplate* dataTemplate;
     CBV data;
+public:
+
 
 
 

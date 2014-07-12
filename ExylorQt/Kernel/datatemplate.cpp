@@ -32,3 +32,11 @@ void DataTemplate::save(CArch& saver) {
         saver << domainAddressVector.at(i);
     }
 }
+
+void DataTemplate::addAttr(QString attrName) {
+    attributesVector.append(new DataAttr(attrName));
+}
+
+void DataTemplate::addValue(int idAttr, QString valueName) {
+    attributesVector.at(idAttr).addValue(valueName);
+}

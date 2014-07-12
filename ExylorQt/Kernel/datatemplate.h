@@ -11,6 +11,8 @@ public:
     DataTemplate();
     void load(CArch& loader);
     void save(CArch& saver);
+    void addAttr(QString attrName);
+    void addValue(int idAttr, QString valueName);
 private:
     int attrCount;
     QVector<DataAttr> attributesVector;
