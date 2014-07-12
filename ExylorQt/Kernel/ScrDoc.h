@@ -100,6 +100,8 @@ public:
   int Add(CkAttr* newElement);
   int GetSize();
   void RemoveAll();
+
+  void Serialize(CArch& ar);
 };
 
 //------------------------------------------------------------------------
@@ -269,6 +271,9 @@ protected:
     virtual bool OnSaveDocument(const char* pszPathName);
     virtual void OnCloseDocument();
     virtual void Serialize(CArch& ar);   // overridden for document i/o
+public:
+    void load(QString fileName);
+    void save(QString fileName);
 #ifdef _DEBUG
     virtual void AssertValid() const;
     virtual void Dump(CDumpContext& dc) const;

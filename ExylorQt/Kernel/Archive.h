@@ -1,3 +1,4 @@
+//<<<<<<< HEAD
 #pragma once
 
 #ifndef ARCH_ROM
@@ -85,3 +86,4 @@ protected:
   string m_strFileName;
 };
 #endif  // ARCH_ROM
+

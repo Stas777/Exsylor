@@ -200,6 +200,12 @@ int CkAttrArray::GetSize() {
     return m_attrArr.size();
 }
 
+void CkAttrArray::Serialize(CArch& ar) {
+    for (int i = 0; i < GetSize(); i++) {
+        GetAt(i)->Serialize(ar);
+    }
+}
+
 /////////////////////////////////////////////////////////////////////////////
 
 

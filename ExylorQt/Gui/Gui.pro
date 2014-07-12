@@ -34,3 +34,14 @@ FORMS    += mainwindow.ui \
     expertwidget.ui \
     newfile.ui \
     knowledgedialogue.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/ -lKernel
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/ -lKernel
+else:unix: LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/ -lKernel
+
+INCLUDEPATH += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
+DEPENDPATH += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
+
+win32:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/Kernel.lib
+else:win32:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/Kernel.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/libKernel.a
