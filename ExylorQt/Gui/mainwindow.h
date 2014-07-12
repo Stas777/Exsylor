@@ -16,7 +16,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    Model* getModel() const;
+    Model* getModel();
     void setModel(const Model &value);
 
 private slots:

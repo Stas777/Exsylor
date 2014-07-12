@@ -12,9 +12,6 @@ void Attr::addValue(QString valueName) {
     m_ValNames.append(valueName);
 }
 
-DataAttr::DataAttr(QString attrName) :
-    Attr(attrName) {}
-
 void Attr::load(CArch& loader) {
     loader >> m_sTitle;
     int valCount;
@@ -34,12 +31,17 @@ void Attr::save(CArch& saver) {
     }
 }
 
+DataAttr::DataAttr(){
+}
+
+DataAttr::DataAttr(QString attrName) :
+   Attr(attrName) {}
+
 void DataAttr::load(CArch& loader) {
     Attr::load(loader);
     int bitCount;
-    load >> bitCount;
+    loader >> bitCount;
 }
-
 void DataAttr::save(CArch& saver) {
     Attr::save(saver);
 }

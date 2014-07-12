@@ -3,8 +3,8 @@
 
 #include <QString>
 #include <QVector>
-#include <BaseBool.h>
-#include <Archive.h>
+#include "BaseBool.h"
+#include "Archive.h"
 
 class Attr {
 public:
@@ -13,6 +13,7 @@ public:
     void addValue(QString valueName);
     virtual void load(CArch& loader); // look up ad ScrObj CkAttr:Serialize
     virtual void save(CArch& saver);
+    virtual ~Attr(){}
 // Attributes
     QString       m_sTitle;     // Name of attribute
     QVector<QString>  m_ValNames;   // Names of attribute values
@@ -27,6 +28,7 @@ public:
     DataAttr(QString attrName);
     void load(CArch& loader);
     void save(CArch& saver);
+    virtual ~DataAttr(){}
 private:
     CBV  m_DFlag;               // Attribute values flags
 };
@@ -40,5 +42,6 @@ private:
     CBV  m_KifFlag;             // Attribute values flags
     CBV  m_KthenFlag;           // Attribute values flags
 };
+
 
 #endif // ATTR_H

@@ -33,7 +33,7 @@ void NewFile::on_addButton_clicked()
         return;
     }
     if (ui->attributeslineEdit->text() != NULL) {
-        ()parentWidget()
+        //((MainWindow*)parentWidget())->getModel()->
     }
 
 
