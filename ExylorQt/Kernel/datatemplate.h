@@ -3,6 +3,7 @@
 
 #include "ScrDoc.h"
 #include "QVector"
+#include "attr.h"
 
 class DataTemplate
 {
@@ -12,7 +13,7 @@ public:
     void save(CArch& saver);
 private:
     int attrCount;
-    QVector<CkAttr> attributesVector;
+    QVector<DataAttr> attributesVector;
     QVector<int> domainLenghtsVector;
     QVector<int> domainAddressVector;
 };

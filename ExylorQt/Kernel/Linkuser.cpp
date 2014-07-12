@@ -1,27 +1,15 @@
 // scrdoc.cpp : implementation of the CExsDoc class
 // 17.05.2007 -------------------------------------
 
-#include "stdafx.h"
-#include <io.h>
 #include <ctype.h>
-#include <sys\types.h>
-#include <sys\stat.h>
-#include "Exsylor.h"
-#include "scrdoc.h"
-#include "moddlg.h"
-#include "scriptvw.h"
-#include "brview.h"
-#include "trbzview.h"
-#include "treeview.h"
-#include "bmview.h"
-#include "modview.h"
-#include "wordview.h"
-#include "mainfrm.h"
+#include "ScrDoc.h"
 
 #ifdef _DEBUG
 #undef THIS_FILE
 static char BASED_CODE THIS_FILE[] = __FILE__;
 #endif
+
+#ifdef __MYLOCK
 
 extern int nDoms;
 extern CBM MaskDom;
@@ -444,5 +432,7 @@ void CScriptDoc::FromMatrDB(CBM& Matr)
     m_pSamples.Add(pReg);
   }
 }
+
+#endif //__MYLOCK
 
 

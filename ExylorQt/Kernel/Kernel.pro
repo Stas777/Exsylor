@@ -26,7 +26,8 @@ SOURCES += \
     knowledge.cpp \
     datatemplate.cpp \
     modelmanager.cpp \
-    Linkuser.cpp
+    Linkuser.cpp \
+    attr.cpp
 
 HEADERS += \
     ScrDoc.h \
@@ -38,7 +39,8 @@ HEADERS += \
     data.h \
     knowledge.h \
     datatemplate.h \
-    modelmanager.h
+    modelmanager.h \
+    attr.h
 unix:!symbian {
     maemo5 {
         target.path = /opt/usr/lib

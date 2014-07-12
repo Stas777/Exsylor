@@ -7,8 +7,8 @@ DataTemplate::DataTemplate()
 void DataTemplate::load(CArch& loader) {
     loader >> attrCount;
     for(int i = 0; i < attrCount; i++) {
-        CkAttr attr;
-        attr.Serialize(loader);
+        DataAttr attr;
+        attr.load(loader);
         attributesVector.push_back(attr);
     }
     for(int i = 0; i < attrCount; i++) {
@@ -24,8 +24,8 @@ void DataTemplate::load(CArch& loader) {
 
 void DataTemplate::save(CArch& saver) {
     saver << attrCount;
-    foreach(CkAttr attr, attributesVector) {
-        attr.Serialize(saver);
+    foreach(DataAttr attr, attributesVector) {
+        attr.save(saver);
     }
     for(int i = 0; i < attrCount; i++) {
         saver << domainLenghtsVector.at(i);
