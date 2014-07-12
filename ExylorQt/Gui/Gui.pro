@@ -15,25 +15,31 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     aboutexylor.cpp \
-    datadialog.cpp \
     expertwidget.cpp \
     newfile.cpp \
-    knowledgedialogue.cpp
+    knowledgedialogue.cpp \
+    datadialogue.cpp \
+    iftab.cpp \
+    thentab.cpp
 
 HEADERS  += \
     aboutexylor.h \
     mainwindow.h \
-    datadialog.h \
     expertwidget.h \
     newfile.h \
-    knowledgedialogue.h
+    knowledgedialogue.h \
+    datadialogue.h \
+    iftab.h \
+    thentab.h
 
 FORMS    += mainwindow.ui \
     aboutexylor.ui \
-    datadialog.ui \
     expertwidget.ui \
     newfile.ui \
-    knowledgedialogue.ui
+    knowledgedialogue.ui \
+    datadialogue.ui \
+    iftab.ui \
+    thentab.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/ -lKernel
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/ -lKernel

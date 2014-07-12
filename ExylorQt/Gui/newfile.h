@@ -15,6 +15,9 @@ public:
     explicit NewFile(QWidget *parent = 0);
     ~NewFile();
 
+private slots:
+    void on_importButton_clicked();
+
 private:
     Ui::NewFile *ui;
 };
