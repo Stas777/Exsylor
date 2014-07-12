@@ -45,3 +45,18 @@ void DataAttr::load(CArch& loader) {
 void DataAttr::save(CArch& saver) {
     Attr::save(saver);
 }
+
+
+KnowledgAttr::KnowledgAttr(){
+}
+
+KnowledgAttr::KnowledgAttr(QString attrName) :
+   Attr(attrName) {}
+
+void KnowledgAttr::load(CArch& loader) {
+
+}
+
+void KnowledgAttr::save(CArch& saver) {
+
+}
