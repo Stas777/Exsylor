@@ -24,6 +24,7 @@ public:
 class DataAttr : public Attr {
 public:
     DataAttr();
+    DataAttr(QString attrName);
     void load(CArch& loader);
     void save(CArch& saver);
 private:

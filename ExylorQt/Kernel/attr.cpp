@@ -11,3 +11,6 @@ Attr::Attr(QString title) :
 void Attr::addValue(QString valueName) {
     m_ValNames.append(valueName);
 }
+
+DataAttr::DataAttr(QString attrName) :
+    Attr(attrName) {}
