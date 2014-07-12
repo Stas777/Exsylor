@@ -1,6 +1,6 @@
 #include "datatemplate.h"
 
-DataTemplate::DataTemplate()
+DataTemplate::DataTemplate() : attrCount(0)
 {
 }
 
@@ -34,9 +34,9 @@ void DataTemplate::save(CArch& saver) {
 }
 
 void DataTemplate::addAttr(QString attrName) {
-    attributesVector.append(new DataAttr(attrName));
+    attributesVector.append(DataAttr(attrName));
 }
 
 void DataTemplate::addValue(int idAttr, QString valueName) {
-    attributesVector.at(idAttr).addValue(valueName);
+    attributesVector[idAttr].addValue(valueName);
 }

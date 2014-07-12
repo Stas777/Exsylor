@@ -12,9 +12,7 @@ Model* ModelManager::loadModel(QString &fileName) {
 }
 
 
-Model* ModelManager::saveModel(QString &fileName) {
+void ModelManager::saveModel(QString &fileName, Model& model) {
     CArch saver(const_cast<char*>(fileName.toStdString().c_str()), 0);
-    Model* model = new Model();
-    model->save(saver);
-    return model;
+    model.save(saver);
 }

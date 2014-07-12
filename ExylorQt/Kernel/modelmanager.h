@@ -2,7 +2,9 @@
 #define LOADSAVEMANAGER_H
 
 #include <QString>
-#include <Model.h>
+#include "Model.h"
+
+class Model;
 
 class ModelManager
 {
@@ -10,7 +12,7 @@ public:
     ModelManager();
 
     Model* loadModel(QString &fileName);
-    Model* saveModel(QString &fileName);
+    void saveModel(QString &fileName, Model& model);
 };
 
 #endif // LOADSAVEMANAGER_H

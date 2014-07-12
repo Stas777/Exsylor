@@ -6,8 +6,6 @@
 #include "QVector"
 #include "BaseBool.h"
 
-class Model;
-
 class Data
 {
 public:
