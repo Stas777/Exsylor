@@ -39,11 +39,11 @@ DataAttr::DataAttr(QString attrName) :
 
 void DataAttr::load(CArch& loader) {
     Attr::load(loader);
-    int bitCount;
-    loader >> bitCount;
+    loader >> m_DFlag;
 }
 void DataAttr::save(CArch& saver) {
     Attr::save(saver);
+    saver << m_DFlag;
 }
 
 
@@ -51,12 +51,16 @@ KnowledgAttr::KnowledgAttr(){
 }
 
 KnowledgAttr::KnowledgAttr(QString attrName) :
-   Attr(attrName) {}
+    Attr(attrName) {}
 
 void KnowledgAttr::load(CArch& loader) {
-
+    Attr::load(loader);
+    loader >> m_KifFlag;
+    loader >> m_KthenFlag;
 }
 
 void KnowledgAttr::save(CArch& saver) {
-
+    Attr::save(saver);
+    saver << m_KifFlag;
+    saver << m_KthenFlag;
 }
