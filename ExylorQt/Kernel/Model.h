@@ -15,6 +15,8 @@ class Model {
 friend class ModelManager;
 
 public:
+    Model();
+
     void load(CArch& loader);
     void save(CArch& saver);
 

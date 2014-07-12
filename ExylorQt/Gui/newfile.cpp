@@ -33,7 +33,12 @@ void NewFile::on_addButton_clicked()
         return;
     }
     if (ui->attributeslineEdit->text() != NULL) {
-        ((MainWindow*)parentWidget())->getModel()->getDataTemplate()->addAttr(ui->attributeslineEdit->text());
+        QVector<QString> a(0);
+        a.append(ui->attributeslineEdit->text());
+        MainWindow* prnt = (MainWindow*)parent()->parent();
+        Model* model = (prnt)->getModel();
+        DataTemplate* datatemp = model->getDataTemplate();
+        datatemp->addAttr(ui->attributeslineEdit->text());
     }
 
 
