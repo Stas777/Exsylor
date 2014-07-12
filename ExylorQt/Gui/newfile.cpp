@@ -2,6 +2,7 @@
 #include "ui_newfile.h"
 #include "QFileDialog"
 #include <QMessageBox>
+#include "mainwindow.h"
 
 NewFile::NewFile(QWidget *parent) :
     QDialog(parent),
@@ -30,6 +31,9 @@ void NewFile::on_addButton_clicked()
     if (ui->attributeslineEdit->text() == NULL && ui->valueslineEdit->text() == NULL) {
         QMessageBox::information(this,"Format error", "one, and anly one form must be filled before adding");
         return;
+    }
+    if (ui->attributeslineEdit->text() != NULL) {
+        ()parentWidget()
     }
 
 

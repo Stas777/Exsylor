@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "../Kernel/Model.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +16,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    Model* getModel() const;
+    void setModel(const Model &value);
+
 private slots:
     void on_actionAbout_Exsylor_triggered();
 
@@ -26,6 +30,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Model model;
 };
 
 #endif // MAINWINDOW_H
