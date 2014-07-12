@@ -18,6 +18,9 @@ public:
     void load(CArch& loader);
     void save(CArch& saver);
 
+    DataTemplate* getDataTemplate();
+    void setDataTemplate(const DataTemplate &value);
+
 private:
     QString modelName;
 

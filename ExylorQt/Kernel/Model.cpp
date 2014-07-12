@@ -34,3 +34,13 @@ void Model::save(CArch& saver) {
         knowsMap.value(k)->save(saver);
     }
 }
+DataTemplate *Model::getDataTemplate()
+{
+    return &dataTemplate;
+}
+
+void Model::setDataTemplate(const DataTemplate &value)
+{
+    dataTemplate = value;
+}
+
