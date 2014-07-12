@@ -36,8 +36,10 @@ private:
 class KnowledgAttr : public Attr {
 public:
     KnowledgAttr();
+    KnowledgAttr(QString attrName);
     void load(CArch& loader);
     void save(CArch& saver);
+    virtual ~KnowledgAttr(){}
 private:
     CBV  m_KifFlag;             // Attribute values flags
     CBV  m_KthenFlag;           // Attribute values flags
