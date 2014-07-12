@@ -2,5 +2,4 @@
 
 Data::Data(DataTemplate* dataTemplate):
     dataTemplate(dataTemplate) {
-
 }
