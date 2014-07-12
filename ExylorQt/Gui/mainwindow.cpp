@@ -40,3 +40,13 @@ void MainWindow::on_actionOpen_triggered()
     QString fileName = QFileDialog::getOpenFileName(this, tr("Open script file"),
                                                     "./", tr("Script files (*.scr)"));
 }
+Model *MainWindow::getModel() const
+{
+    return &model;
+}
+
+void MainWindow::setModel(const Model &value)
+{
+    model = value;
+}
+
