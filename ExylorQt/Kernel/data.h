@@ -4,6 +4,7 @@
 #include "datatemplate.h"
 #include "ScrDoc.h"
 #include "QVector"
+#include "BaseBool.h"
 
 class Model;
 
@@ -15,6 +16,7 @@ public:
     void save(CArch& saver);
 private:
     DataTemplate* dataTemplate;
+    CBV data;
 
 
 
