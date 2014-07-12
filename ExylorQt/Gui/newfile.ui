@@ -16,7 +16,7 @@
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
-  <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0,0">
+  <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0,0">
    <property name="horizontalSpacing">
     <number>10</number>
    </property>

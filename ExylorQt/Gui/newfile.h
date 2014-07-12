@@ -18,6 +18,8 @@ public:
 private slots:
     void on_importButton_clicked();
 
+    void on_addButton_clicked();
+
 private:
     Ui::NewFile *ui;
 };
