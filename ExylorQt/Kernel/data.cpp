@@ -1,6 +1,6 @@
 #include "data.h"
 
-Data::Data(Model* model):
-    model(model) {
+Data::Data(DataTemplate* dataTemplate):
+    dataTemplate(dataTemplate) {
 
 }

@@ -1,7 +1,8 @@
 #ifndef KNOWLEDGE_H
 #define KNOWLEDGE_H
 
-#include "Model.h"
+#include "datatemplate.h"
+
 
 class Knowledge
 {
@@ -10,7 +11,7 @@ public:
     void load(CArch& loader);
     void save(CArch& saver);
 private:
-    Model* model;
+    DataTemplate* dataTemplate;
 
 
 

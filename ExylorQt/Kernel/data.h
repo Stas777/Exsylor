@@ -1,18 +1,20 @@
 #ifndef DATA_H
 #define DATA_H
 
-#include "Model.h"
+#include "datatemplate.h"
 #include "ScrDoc.h"
 #include "QVector"
+
+class Model;
 
 class Data
 {
 public:
-    Data(Model* model);
+    Data(DataTemplate* dataTemplate);
     void load(CArch& loader);
     void save(CArch& saver);
 private:
-    Model* model;
+    DataTemplate* dataTemplate;
 
 
 

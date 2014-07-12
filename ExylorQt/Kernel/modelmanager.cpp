@@ -5,7 +5,7 @@ ModelManager::ModelManager()
 }
 
 Model* ModelManager::loadModel(QString &fileName) {
-    CArch loader(fileName, 1);
+    CArch loader(const_cast<char*>(fileName.toStdString().c_str()), 1);
     Model* model = new Model();
     model->load(loader);
     return model;
@@ -13,7 +13,7 @@ Model* ModelManager::loadModel(QString &fileName) {
 
 
 Model* ModelManager::saveModel(QString &fileName) {
-    CArch saver(fileName, 1);
+    CArch saver(const_cast<char*>(fileName.toStdString().c_str()), 0);
     Model* model = new Model();
     model->save(saver);
     return model;
