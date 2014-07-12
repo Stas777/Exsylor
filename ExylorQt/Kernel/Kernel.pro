@@ -25,7 +25,8 @@ SOURCES += \
     data.cpp \
     knowledge.cpp \
     datatemplate.cpp \
-    modelmanager.cpp
+    modelmanager.cpp \
+    Linkuser.cpp
 
 HEADERS += \
     ScrDoc.h \
