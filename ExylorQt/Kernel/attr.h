@@ -12,6 +12,9 @@ public:
     Attr(QString title);
     int getValueId(QString valueName);
     void addValue(QString valueName);
+
+    int getSize();
+
     virtual void load(CArch& loader); // look up ad ScrObj CkAttr:Serialize
     virtual void save(CArch& saver);
     virtual ~Attr(){}

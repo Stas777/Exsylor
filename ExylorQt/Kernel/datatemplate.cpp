@@ -47,10 +47,10 @@ void DataTemplate::addValue(int idAttr, QString valueName) {
     ++size;
 }
 
-int DataTemplate::getAttrId(QString AttrName) {
+int DataTemplate::getAttrId(QString attrName) {
     int i = 0;
     foreach (DataAttr dataAttr, attributesVector) {
-        if (dataAttr.m_sTitle == AttrName) {
+        if (dataAttr.m_sTitle == attrName) {
             return i;
         }
         ++i;
@@ -58,10 +58,19 @@ int DataTemplate::getAttrId(QString AttrName) {
     return -1;
 }
 
+DataAttr* DataTemplate::getAttr(QString attrName) {
+    int id = getAttrId(attrName);
+    return &attributesVector[id];
+}
+
 int DataTemplate::getBitId(QString atrrName, QString valueName) {
     DataAttr* dataAttr = &attributesVector[getAttrId(atrrName)];
     int id = dataAttr->getValueId(valueName);
     return id;
+}
+
+int DataTemplate::getFirstBitId(QString attrName) {
+
 }
 
 int DataTemplate::getSize() {
