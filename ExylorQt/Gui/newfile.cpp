@@ -39,6 +39,7 @@ void NewFile::on_addButton_clicked()
         Model* model = (prnt)->getModel();
         DataTemplate* datatemp = model->getDataTemplate();
         datatemp->addAttr(ui->attributeslineEdit->text());
+        //ui->attributeslistView->
     }
 
 
