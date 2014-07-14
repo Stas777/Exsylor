@@ -27,6 +27,8 @@ private slots:
 
     void on_attributeslistView_clicked(const QModelIndex &index);
 
+    void on_okButton_clicked();
+
 private:
     Ui::NewFile *ui;
     Model* model;

@@ -33,6 +33,7 @@ void MainWindow::on_actionNew_triggered()
     NewFile *newfile = new NewFile(this);
     newfile->setModal(true);
     newfile->exec();
+    model = *(newfile->getModel());
 }
 
 void MainWindow::on_actionOpen_triggered()

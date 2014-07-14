@@ -42,10 +42,15 @@ void NewFile::on_addButton_clicked()
         QString attr = ui->attributeslineEdit->text();
 
         model->getDataTemplate()->addAttr(attr);
-        //ui->attributeslistView->
 
         QStandardItem* item = new QStandardItem(attr);
         attrListViewModel->appendRow(item);
+
+        //select this element
+        int rowCount = attrListViewModel->rowCount();
+        QModelIndex currentIndex = attrListViewModel->index(rowCount - 1, 0);
+        ui->attributeslistView->setCurrentIndex(currentIndex);
+
         ui->attributeslineEdit->setText("");
     }
     if (ui->valueslineEdit->text() != NULL) {
@@ -66,14 +71,19 @@ Model* NewFile::getModel() {
 
 void NewFile::on_attributeslistView_clicked(const QModelIndex &index)
 {
-  int idAttr = ui->attributeslistView->currentIndex().row();
+    int idAttr = ui->attributeslistView->currentIndex().row();
 
-  valueListViewModel->clear();
+    valueListViewModel->clear();
 
-  DataAttr* dataAttr = model->getDataTemplate()->getAttr(idAttr);
+    DataAttr* dataAttr = model->getDataTemplate()->getAttr(idAttr);
 
-  foreach (QString qstr, dataAttr->getValueNames()) {
-      QStandardItem* item = new QStandardItem(qstr);
-      valueListViewModel->appendRow(item);
-  }
+    foreach (QString qstr, dataAttr->getValueNames()) {
+        QStandardItem* item = new QStandardItem(qstr);
+        valueListViewModel->appendRow(item);
+    }
+}
+
+void NewFile::on_okButton_clicked()
+{
+    this->close();
 }
