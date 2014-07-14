@@ -18,7 +18,8 @@ private:
 public:
     void setAttr(QString attrName, QString valueName);
     bool getBit(int bitId);
-
+private:
+    void setBit(int bitId, bool value);
 
 
 

@@ -74,7 +74,29 @@ int DataTemplate::getBitId(QString atrrName, QString valueName) {
 }
 
 int DataTemplate::getFirstBitId(QString attrName) {
+    int i = 0;
+    int bits = 0;
+    foreach (DataAttr dataAttr, attributesVector) {
+        if (dataAttr.m_sTitle == attrName) {
+            return bits;
+        }
+        bits += dataAttr.getSize();
+        ++i;
+    }
+    return -1;
+}
 
+int DataTemplate::getLastBitId(QString attrName) {
+    int i = 0;
+    int bits = 0;
+    foreach (DataAttr dataAttr, attributesVector) {
+        if (dataAttr.m_sTitle == attrName) {
+            return bits + dataAttr.getSize() - 1;
+        }
+        bits += dataAttr.getSize();
+        ++i;
+    }
+    return -1;
 }
 
 int DataTemplate::getSize() {
