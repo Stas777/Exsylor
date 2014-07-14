@@ -11,15 +11,16 @@ class TreeCheckboxWidget : public QTreeView
     Q_OBJECT
 
 public:
-    explicit TreeCheckboxWidget(QTreeView *parent = 0);
+    explicit TreeCheckboxWidget(QWidget *parent = 0);
     ~TreeCheckboxWidget();
     void initWithCheckboxItems(Model *model);
-    void initWithRadiobuttonItems(Model *model);
+    void initWithRadiobuttonItems(Model *model, Data *data);
     void initWithPlainText(Model *model);
 private:
 
     bool usingPlainText;// radio or checkbox
     Model *model;
+    Data *data;
     QStandardItemModel* itemModel;
     QList< QStandardItem * > rows;
     QList<QStandardItem *> prepareRow(const QString& name);
@@ -27,6 +28,7 @@ private:
     void updateData();
     void initialDraw( const QVector<DataAttr> &) ;
     void initAll(Model *cur_model);
+    void fillWithData();
 private slots:
 
 

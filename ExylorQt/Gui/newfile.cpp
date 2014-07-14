@@ -86,4 +86,5 @@ void NewFile::on_attributeslistView_clicked(const QModelIndex &index)
 void NewFile::on_okButton_clicked()
 {
     this->close();
+
 }

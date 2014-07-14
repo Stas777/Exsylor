@@ -3,11 +3,13 @@
 #include "datadialogue.h"
 #include "knowledgedialogue.h"
 #include "newfile.h"
+#include "mainwindow.h"
 
-ExpertWidget::ExpertWidget(QWidget *parent) :
+ExpertWidget::ExpertWidget(QWidget *parent, Model *mo) :
     QWidget(parent),
     ui(new Ui::ExpertWidget)
 {
+    model = mo;
     ui->setupUi(this);
 }
 
@@ -18,7 +20,8 @@ ExpertWidget::~ExpertWidget()
 
 void ExpertWidget::on_dataButton_clicked()
 {
-    DataDialogue dataDialogue;
+
+    DataDialogue dataDialogue(this, model);
     dataDialogue.setModal(true);
     dataDialogue.exec();
 }

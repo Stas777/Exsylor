@@ -17,7 +17,7 @@ public:
     ~MainWindow();
 
     Model* getModel();
-    void setModel(const Model &value);
+    void setModel(Model &value);
 
 private slots:
     void on_actionAbout_Exsylor_triggered();
@@ -30,7 +30,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    Model model;
+    Model *model;
 };
 
 #endif // MAINWINDOW_H

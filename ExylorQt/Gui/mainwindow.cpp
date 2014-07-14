@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    model = new Model();
 }
 
 MainWindow::~MainWindow()
@@ -33,7 +34,7 @@ void MainWindow::on_actionNew_triggered()
     NewFile *newfile = new NewFile(this);
     newfile->setModal(true);
     newfile->exec();
-    model = *(newfile->getModel());
+    model = newfile->getModel();
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -43,11 +44,11 @@ void MainWindow::on_actionOpen_triggered()
 }
 Model *MainWindow::getModel()
 {
-    return &model;
+    return model;
 }
 
-void MainWindow::setModel(const Model &value)
+void MainWindow::setModel(Model &value)
 {
-    model = value;
+    model = &value;
 }
 
