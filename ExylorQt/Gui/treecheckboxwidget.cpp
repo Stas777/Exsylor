@@ -13,9 +13,10 @@ void TreeCheckboxWidget::initWithCheckboxItems(Model *cur_model){
     initAll(cur_model);
 }
 
-void TreeCheckboxWidget::initWithRadiobuttonItems(Model *cur_model){
+void TreeCheckboxWidget::initWithRadiobuttonItems(Model *cur_model, Data *cur_data){
     usingPlainText = false;
     initAll(cur_model);
+    data = cur_data;
     connect(itemModel, SIGNAL(itemChanged(QStandardItem *)),this, SLOT(actLikeARadiobutton(QStandardItem*)));
 }
 
@@ -62,7 +63,7 @@ QList<QStandardItem *> TreeCheckboxWidget::prepareCheckboxRow(const QString &nam
 }
 
 
-void TreeCheckboxWidget::actLikeACheckbox(QStandardItem *){
+void TreeCheckboxWidget::actLikeACheckbox(QStandardItem *it){
     //updateData();
 }
 
@@ -75,8 +76,12 @@ void TreeCheckboxWidget::actLikeARadiobutton(QStandardItem *it){
             item->setCheckState(Qt::Unchecked);
         }
     }
+    data->setAttr(it->parent()->text(), it->text() );
     it->setCheckState(Qt::Checked);
 }
+
+
+
 
 TreeCheckboxWidget::~TreeCheckboxWidget()
 {

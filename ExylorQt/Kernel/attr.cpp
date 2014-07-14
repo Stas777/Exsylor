@@ -31,6 +31,17 @@ void Attr::save(CArch& saver) {
     }
 }
 
+int Attr::getValueId(QString valueName) {
+    int i = 0;
+    foreach (QString name, m_ValNames) {
+        if (name == valueName) {
+            return i;
+        }
+        i++;
+    }
+    return -1;
+}
+
 DataAttr::DataAttr(){
 }
 

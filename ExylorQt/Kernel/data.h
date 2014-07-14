@@ -16,6 +16,7 @@ private:
     DataTemplate* dataTemplate;
     CBV data;
 public:
+    void setAttr(QString attrName, QString valueName);
 
 
 

@@ -2,6 +2,7 @@
 
 DataTemplate::DataTemplate() :
     attrCount(0),
+    size(0),
     attributesVector(0){}
 
 void DataTemplate::load(CArch& loader) {
@@ -43,4 +44,26 @@ void DataTemplate::addAttr(QString attrName) {
 
 void DataTemplate::addValue(int idAttr, QString valueName) {
     attributesVector[idAttr].addValue(valueName);
+    ++size;
+}
+
+int DataTemplate::getAttrId(QString AttrName) {
+    int i = 0;
+    foreach (DataAttr dataAttr, attributesVector) {
+        if (dataAttr.m_sTitle == AttrName) {
+            return i;
+        }
+        ++i;
+    }
+    return -1;
+}
+
+int DataTemplate::getBitId(QString atrrName, QString valueName) {
+    DataAttr* dataAttr = &attributesVector[getAttrId(atrrName)];
+    int id = dataAttr->getValueId(valueName);
+    return id;
+}
+
+int DataTemplate::getSize() {
+    return size;
 }
