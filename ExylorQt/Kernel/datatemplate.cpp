@@ -22,7 +22,7 @@ void DataTemplate::load(CArch& loader) {
     }
 }
 
-QVector<DataAttr>& getAttributeVector() const{
+QVector<DataAttr>& DataTemplate::getAttributesVector() {
     return attributesVector;
 }
 

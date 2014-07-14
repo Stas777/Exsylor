@@ -1,5 +1,4 @@
 #include "treecheckboxwidget.h"
-#include "ui_treecheckboxwidget.h"
 
 TreeCheckboxWidget::TreeCheckboxWidget(QTreeView *parent) :
     QTreeView(parent)
@@ -64,12 +63,12 @@ QList<QStandardItem *> TreeCheckboxWidget::prepareCheckboxRow(const QString &nam
 
 
 void TreeCheckboxWidget::actLikeACheckbox(QStandardItem *){
-    updateData();
+    //updateData();
 }
 
 
 void TreeCheckboxWidget::actLikeARadiobutton(QStandardItem *it){
-    updateData();
+    //updateData();
     if(it->checkState() == Qt::Unchecked) return;
     foreach (QStandardItem * item, rows) {
         if(item->checkState() == Qt::Checked && item->parent() == it->parent() && it != item){

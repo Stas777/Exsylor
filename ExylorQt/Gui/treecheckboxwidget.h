@@ -5,7 +5,7 @@
 #include <QTreeView>
 #include <QStandardItemModel>
 #include <QStandardItem>
-#include <../../../../../some/Exsylor/ExylorQt/Kernel/Model.h>
+#include <../Kernel/Model.h>
 class TreeCheckboxWidget : public QTreeView
 {
     Q_OBJECT
