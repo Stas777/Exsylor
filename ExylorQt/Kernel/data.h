@@ -17,6 +17,7 @@ private:
     CBV data;
 public:
     void setAttr(QString attrName, QString valueName);
+    bool getBit(int bitId);
 
 
 
