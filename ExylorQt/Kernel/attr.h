@@ -12,6 +12,7 @@ public:
     Attr(QString title);
     int getValueId(QString valueName);
     void addValue(QString valueName);
+    QVector<QString> getValueNames();
 
     int getSize();
 

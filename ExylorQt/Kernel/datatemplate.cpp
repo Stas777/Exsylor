@@ -63,6 +63,10 @@ DataAttr* DataTemplate::getAttr(QString attrName) {
     return &attributesVector[id];
 }
 
+DataAttr* DataTemplate::getAttr(int attrId) {
+    return &attributesVector[attrId];
+}
+
 int DataTemplate::getBitId(QString atrrName, QString valueName) {
     DataAttr* dataAttr = &attributesVector[getAttrId(atrrName)];
     int id = dataAttr->getValueId(valueName);
