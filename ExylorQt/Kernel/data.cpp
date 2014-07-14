@@ -18,3 +18,7 @@ void Data::setAttr(QString attrName, QString valueName) {
     int id = dataTemplate->getBitId(attrName, valueName);
     data.SetBitAt(id, true);
 }
+
+bool Data::getBit(int bitId) {
+    return data.GetBitAt(bitId);
+}
