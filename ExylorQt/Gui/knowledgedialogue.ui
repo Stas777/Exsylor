@@ -17,7 +17,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="IfTab" name="iftab">
       <attribute name="title">
@@ -43,7 +43,7 @@
   <customwidget>
    <class>ThenTab</class>
    <extends>QWidget</extends>
-   <header location="global">thentab.h</header>
+   <header>thentab.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

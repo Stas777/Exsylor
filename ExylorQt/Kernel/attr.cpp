@@ -42,6 +42,14 @@ int Attr::getValueId(QString valueName) {
     return -1;
 }
 
+QVector<QString> Attr::getValueNames(){
+    return m_ValNames;
+}
+
+int Attr::getSize() {
+    return m_ValNames.size();
+}
+
 DataAttr::DataAttr(){
 }
 

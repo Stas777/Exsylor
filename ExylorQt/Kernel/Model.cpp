@@ -2,7 +2,6 @@
 #include "Archive.h"
 
 Model::Model() : dataTemplate() {
-    int x =4;
 }
 
 void Model::load(CArch& loader) {

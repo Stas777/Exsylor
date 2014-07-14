@@ -8,7 +8,7 @@
 class DataTemplate
 {
 private:
-    int getAttrId(QString AttrName);
+    int getAttrId(QString attrName);
 
 public:
     DataTemplate();
@@ -17,8 +17,13 @@ public:
     void addAttr(QString attrName);
     void addValue(int idAttr, QString valueName);
 
+    int getBitId(QString attrName, QString valueName);
+    int getFirstBitId(QString attrName);
+    int getLastBitId(QString attrName);
 
-    int getBitId(QString atrrName, QString valueName);
+    DataAttr* getAttr(QString attrName);
+    DataAttr* getAttr(int attrId);
+
     int getSize();
     QVector<DataAttr>& getAttributesVector() ;
 private:
