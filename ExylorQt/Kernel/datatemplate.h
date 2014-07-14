@@ -13,6 +13,7 @@ public:
     void save(CArch& saver);
     void addAttr(QString attrName);
     void addValue(int idAttr, QString valueName);
+    QVector<DataAttr> getAttributesVector() const;
 private:
     int attrCount;
     QVector<DataAttr> attributesVector;
