@@ -3,12 +3,18 @@
 #include "QFileDialog"
 #include <QMessageBox>
 #include "mainwindow.h"
+#include <QStandardItemModel>
 
 NewFile::NewFile(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewFile)
 {
     ui->setupUi(this);
+    model = new Model();
+    attrListViewModel = new QStandardItemModel();
+    ui->attributeslistView->setModel(attrListViewModel);
+    valueListViewModel = new QStandardItemModel();
+    ui->valueslistView->setModel(valueListViewModel);
 }
 
 NewFile::~NewFile()
@@ -33,16 +39,41 @@ void NewFile::on_addButton_clicked()
         return;
     }
     if (ui->attributeslineEdit->text() != NULL) {
-        QVector<QString> a(0);
-        a.append(ui->attributeslineEdit->text());
-        MainWindow* prnt = (MainWindow*)parent()->parent();
-        Model* model = (prnt)->getModel();
-        DataTemplate* datatemp = model->getDataTemplate();
-        datatemp->addAttr(ui->attributeslineEdit->text());
+        QString attr = ui->attributeslineEdit->text();
+
+        model->getDataTemplate()->addAttr(attr);
         //ui->attributeslistView->
+
+        QStandardItem* item = new QStandardItem(attr);
+        attrListViewModel->appendRow(item);
+        ui->attributeslineEdit->setText("");
     }
+    if (ui->valueslineEdit->text() != NULL) {
+        int idAttr = ui->attributeslistView->currentIndex().row();
+        QString attrValue = ui->valueslineEdit->text();
 
+        model->getDataTemplate()->addValue(idAttr, attrValue);
 
+        QStandardItem* item = new QStandardItem(attrValue);
+        valueListViewModel->appendRow(item);
+        ui->valueslineEdit->setText("");
+    }
+}
 
-    ui->attributeslineEdit->text();
+Model* NewFile::getModel() {
+    return model;
+}
+
+void NewFile::on_attributeslistView_clicked(const QModelIndex &index)
+{
+  int idAttr = ui->attributeslistView->currentIndex().row();
+
+  valueListViewModel->clear();
+
+  DataAttr* dataAttr = model->getDataTemplate()->getAttr(idAttr);
+
+  foreach (QString qstr, dataAttr->getValueNames()) {
+      QStandardItem* item = new QStandardItem(qstr);
+      valueListViewModel->appendRow(item);
+  }
 }
