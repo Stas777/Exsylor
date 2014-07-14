@@ -20,6 +20,7 @@ public:
 
     int getBitId(QString atrrName, QString valueName);
     int getSize();
+    QVector<DataAttr>& getAttributesVector() ;
 private:
     int attrCount;
     int size;

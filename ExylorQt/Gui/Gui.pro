@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     knowledgedialogue.cpp \
     datadialogue.cpp \
     iftab.cpp \
-    thentab.cpp
+    thentab.cpp \
+    treecheckboxwidget.cpp
 
 HEADERS  += \
     aboutexylor.h \
@@ -30,7 +31,8 @@ HEADERS  += \
     knowledgedialogue.h \
     datadialogue.h \
     iftab.h \
-    thentab.h
+    thentab.h \
+    treecheckboxwidget.h
 
 FORMS    += mainwindow.ui \
     aboutexylor.ui \
@@ -41,13 +43,14 @@ FORMS    += mainwindow.ui \
     iftab.ui \
     thentab.ui
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/ -lKernel
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/ -lKernel
-else:unix: LIBS += -L$$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/ -lKernel
 
-INCLUDEPATH += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
-DEPENDPATH += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/ -lKernel
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/ -lKernel
+else:unix: LIBS += -L$$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/ -lKernel
 
-win32:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/Kernel.lib
-else:win32:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/Kernel.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/libKernel.a
+INCLUDEPATH += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
+DEPENDPATH += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
+
+win32:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/Kernel.lib
+else:win32:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/Kernel.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/libKernel.a

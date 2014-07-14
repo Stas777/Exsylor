@@ -23,6 +23,10 @@ void DataTemplate::load(CArch& loader) {
     }
 }
 
+QVector<DataAttr>& DataTemplate::getAttributesVector() {
+    return attributesVector;
+}
+
 void DataTemplate::save(CArch& saver) {
     saver << attrCount;
     foreach(DataAttr attr, attributesVector) {
