@@ -44,13 +44,18 @@ FORMS    += mainwindow.ui \
     thentab.ui
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/ -lKernel
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/ -lKernel
-else:unix: LIBS += -L$$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/ -lKernel
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../Building/Kernel/release/ -lKernel
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../Building/Kernel/debug/ -lKernel
+else:unix: LIBS += -L$$PWD/../Building/Kernel/ -lKernel
 
-INCLUDEPATH += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
-DEPENDPATH += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug
+INCLUDEPATH += $$PWD/../Building/Kernel/debug
+DEPENDPATH += $$PWD/../Building/Kernel/debug
 
-win32:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/release/Kernel.lib
-else:win32:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/debug/Kernel.lib
-else:unix: PRE_TARGETDEPS += $$PWD/../build-Kernel-Desktop_Qt_5_1_1_GCC_32bit-Debug/libKernel.a
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../Building/Kernel/release/libKernel.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../Building/Kernel/debug/libKernel.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/../Building/Kernel/release/Kernel.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../Building/Kernel/debug/Kernel.lib
+else:unix: PRE_TARGETDEPS += $$PWD/../Building/Kernel/libKernel.a
+
+RESOURCES += \
+    resources/Images.qrc

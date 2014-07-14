@@ -1,0 +1,41 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>bitmap1.bmp</file>
+        <file>bitmap2.bmp</file>
+        <file>bitmap3.bmp</file>
+        <file>bitmap4.bmp</file>
+        <file>bitmap5.bmp</file>
+        <file>bitmap6.bmp</file>
+        <file>bitmap7.bmp</file>
+        <file>bitmap8.bmp</file>
+        <file>bitmap9.bmp</file>
+        <file>bitmap10.bmp</file>
+        <file>bitmap11.bmp</file>
+        <file>bitmap12.bmp</file>
+        <file>bitmap13.bmp</file>
+        <file>bitmap14.bmp</file>
+        <file>bitmap15.bmp</file>
+        <file>bitmap16.bmp</file>
+        <file>direct.ico</file>
+        <file>empt.ico</file>
+        <file>empty.bmp</file>
+        <file>explan.bmp</file>
+        <file>exstype.bmp</file>
+        <file>Exsylor.ico</file>
+        <file>Exsylor.rc2</file>
+        <file>ExsylorDoc.ico</file>
+        <file>Images.qrc</file>
+        <file>reg.ico</file>
+        <file>reg_edit.bmp</file>
+        <file>reg_scri.bmp</file>
+        <file>regu.ico</file>
+        <file>scri.ico</file>
+        <file>scroptty.bmp</file>
+        <file>system.bmp</file>
+        <file>Toolbar.bmp</file>
+        <file>word.ico</file>
+        <file>word_ed.ico</file>
+        <file>word_edi.bmp</file>
+        <file>word_scr.bmp</file>
+    </qresource>
+</RCC>
