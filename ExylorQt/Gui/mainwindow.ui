@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Exsylor</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources/Images.qrc">
+    <normaloff>:/images/Exsylor.ico</normaloff>:/images/Exsylor.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -110,6 +114,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources/Images.qrc"/>
+ </resources>
  <connections/>
 </ui>
