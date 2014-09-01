@@ -17,105 +17,44 @@
    <iconset resource="resources/Images.qrc">
     <normaloff>:/images/Exsylor.ico</normaloff>:/images/Exsylor.ico</iconset>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Select a block of data:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox"/>
-     </item>
-     <item row="1" column="0" colspan="2">
-      <widget class="TreeCheckboxWidget" name="treeView"/>
-     </item>
-     <item row="2" column="0" colspan="2">
-      <widget class="QLineEdit" name="lineEdit"/>
-     </item>
-    </layout>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1" colspan="2">
+    <widget class="QTableWidget" name="mainTable"/>
    </item>
-   <item>
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0" colspan="2">
-      <widget class="QTextEdit" name="textEdit"/>
-     </item>
-     <item row="2" column="0">
-      <widget class="QPushButton" name="addButton">
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>168</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="3" column="0">
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>13</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="4" column="0">
-      <widget class="QPushButton" name="saveButton">
-       <property name="text">
-        <string>Save</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1">
-      <spacer name="horizontalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>148</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="0" column="0" colspan="2">
-      <widget class="QTableWidget" name="tableWidget"/>
-     </item>
-    </layout>
+   <item row="1" column="1" colspan="2">
+    <widget class="QTextEdit" name="textEdit"/>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="addButton">
+     <property name="text">
+      <string>Add line</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="clearButton">
+     <property name="text">
+      <string>Clear changes</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="saveButton">
+     <property name="text">
+      <string>Save</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="3">
+    <widget class="QTreeView" name="treeView"/>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QLineEdit" name="lineEdit"/>
    </item>
   </layout>
  </widget>
-<<<<<<< HEAD
- <customwidgets>
-  <customwidget>
-   <class>TreeCheckboxWidget</class>
-   <extends>QTreeView</extends>
-   <header>treecheckboxwidget.h</header>
-  </customwidget>
- </customwidgets>
- <resources/>
-=======
  <resources>
   <include location="resources/Images.qrc"/>
  </resources>
->>>>>>> 780fb351bf513e1482269aca5a13702eb3bad2b8
  <connections/>
 </ui>
